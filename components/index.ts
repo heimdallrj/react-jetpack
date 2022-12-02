@@ -2,6 +2,7 @@ export * from './Accordion';
 export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
 export { default as FileInput } from './FileInput';
+export { default as Image } from './Image';
 export { default as ImageInput } from './ImageInput';
 export { default as Radio } from './Radio';
 export { default as RangeInput } from './RangeInput';

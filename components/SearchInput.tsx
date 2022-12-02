@@ -7,7 +7,7 @@ interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   inputStyle?: CSSProperties;
   style?: CSSProperties;
-  onSearch: (keyword: string) => void;
+  onSearch?: (keyword: string) => void;
 }
 
 export default function SearchInput({
@@ -38,7 +38,11 @@ export default function SearchInput({
         style={inputStyle}
         type='search'
       />
-      <button type='submit' disabled={disabled}>
+      <button
+        className={`${prefix}-search-form__btn`}
+        type='submit'
+        disabled={disabled}
+      >
         <span className={`${prefix}-search-form__icon`}>Search</span>
       </button>
     </form>

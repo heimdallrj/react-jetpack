@@ -8,7 +8,9 @@ export const GlobalStyle = createGlobalStyle`
   aside {}
   article {}
   b {}
-  body {}
+  body {
+    font-family: 'Montserrat', sans-serif;
+  }
   button {
     appearance: none;
     box-sizing: border-box;
@@ -244,6 +246,19 @@ export const GlobalStyle = createGlobalStyle`
       cursor: pointer;
       width: 32px;
     }
+  }
+
+  /* Custom:Search Form */
+  .${prefix}-search-form {
+    display: flex;
+
+    &--disabled {}
+
+    &__input {}
+
+    &__btn {}
+
+    &__icon {}
   }
 
   /* Custom:Radio */
