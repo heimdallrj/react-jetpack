@@ -1,7 +1,5 @@
 // @ts-nocheck
 import { createGlobalStyle } from 'styled-components';
-// @todo: get prefix from theme configs
-import { prefix } from '../../config';
 
 export const GlobalStyle = createGlobalStyle`
   html {}
@@ -102,13 +100,13 @@ export const GlobalStyle = createGlobalStyle`
   ul li {}
 
   /* Custom:Accordion */
-  .${prefix}-accordion {
+  .jpk-accordion {
     display: flex;
     flex-direction: column;
     gap: 2px;
 
-    .${prefix}-accordion__section {}
-    .${prefix}-accordion__summary {
+    .jpk-accordion__section {}
+    .jpk-accordion__summary {
       background: ${({ colors, mode }) => colors.primary[mode]};
       box-shadow: 0px 1px 1px -1px ${({ colors, mode }) =>
         colors.primary[
@@ -120,13 +118,13 @@ export const GlobalStyle = createGlobalStyle`
       padding: 10px;
       color: white;
     }
-    .${prefix}-accordion__content {
+    .jpk-accordion__content {
       padding: 10px;
     }
   }
 
   /* Custom:Button */
-  .${prefix}-btn {
+  .jpk-btn {
     border-radius: 4px;
     &__contained {
       background-color: ${({ colors, mode }) => colors.primary[mode]};
@@ -205,7 +203,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /* Custom:Checkbox */
-  .${prefix}-checkbox {
+  .jpk-checkbox {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -220,7 +218,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /* Custom:TextInput */
-  .${prefix}-text-input {
+  .jpk-text-input {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -233,7 +231,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /* Custom:SearchInput */
-  .${prefix}-search-input {
+  .jpk-search-input {
     display: flex;
     border: 1px solid;
 
@@ -249,7 +247,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /* Custom:Search Form */
-  .${prefix}-search-form {
+  .jpk-search-form {
     display: flex;
 
     &--disabled {}
@@ -261,8 +259,20 @@ export const GlobalStyle = createGlobalStyle`
     &__icon {}
   }
 
+  /* Custom: Select */
+  .jpk-select {
+
+    &--disabled {}
+
+    &__label {}
+
+    &__menu {}
+
+    &__menu-item {}
+  }
+
   /* Custom:Radio */
-  .${prefix}-radio {
+  .jpk-radio {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -277,8 +287,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   /* Custom:Tabs */
-  .${prefix}-tabs {
-    .${prefix}-tab {
+  .jpk-tabs {
+    .jpk-tab {
       border-bottom: 1px solid #ccc;
       padding-left: 0;
 

@@ -1,6 +1,15 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import { useConfig } from '../hooks';
+import styled from 'styled-components';
+
+type BlockProps = {
+  $flexDirection: string;
+};
+export const Block = styled.div<BlockProps>`
+  display: flex;
+  flex-direction: ${(props) => props.$flexDirection};
+  align-items: center;
+`;
 
 enum LabelPosMap {
   right = 'row',
@@ -34,21 +43,21 @@ export default function Checkbox({
   value,
   ...restProps
 }: CheckboxProps) {
-  const { prefix }: any = useConfig();
   return (
-    <div
+    <Block
+      $flexDirection={LabelPosMap[labelPosition]}
       className={clsx(
-        `${prefix}-checkbox`,
-        checked && `${prefix}-checkbox--checked`,
-        disabled && `${prefix}-checkbox--disabled`,
+        'jpk-checkbox',
+        checked && 'jpk-checkbox--checked',
+        disabled && 'jpk-checkbox--disabled',
         className
       )}
-      style={{ ...style, flexDirection: LabelPosMap[labelPosition] }}
+      style={style}
     >
       <input
         {...restProps}
         checked={checked}
-        className={`${prefix}-checkbox__input`}
+        className='jpk-checkbox__input'
         disabled={disabled}
         name={name}
         style={inputStyle}
@@ -56,10 +65,10 @@ export default function Checkbox({
         value={value}
       />
       {label && (
-        <label className={`${prefix}-checkbox__label`} htmlFor={name}>
+        <label className='jpk-checkbox__label' htmlFor={name}>
           {label}
         </label>
       )}
-    </div>
+    </Block>
   );
 }

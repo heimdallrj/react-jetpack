@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import { useConfig } from '../hooks';
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   action?: string;
@@ -19,31 +18,30 @@ export default function SearchInput({
   onSearch,
   ...restProps
 }: SearchInputProps) {
-  const { prefix }: any = useConfig();
   return (
     <form
       action={action}
       className={clsx(
-        `${prefix}-search-form`,
-        disabled && `${prefix}-search-form--disabled`,
+        'jpk-search-form',
+        disabled && 'jpk-search-form--disabled',
         className
       )}
       style={style}
     >
       <input
         {...restProps}
-        className={`${prefix}-search-form__input`}
+        className='jpk-search-form__input'
         disabled={disabled}
         name='q'
         style={inputStyle}
         type='search'
       />
       <button
-        className={`${prefix}-search-form__btn`}
+        className='jpk-search-form__btn'
         type='submit'
         disabled={disabled}
       >
-        <span className={`${prefix}-search-form__icon`}>Search</span>
+        <span className='jpk-search-form__icon'>Search</span>
       </button>
     </form>
   );

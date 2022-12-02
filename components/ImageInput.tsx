@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useConfig } from '../hooks';
 
 export interface ImageInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -16,12 +15,11 @@ export default function ImageInput({
   src,
   ...restProps
 }: ImageInputProps) {
-  const { prefix }: any = useConfig();
   return (
     <input
       {...restProps}
       alt={alt || name || src}
-      className={clsx(`${prefix}-image-input`, className)}
+      className={clsx('jpk-image-input', className)}
       name={name}
       src={src}
       type='image'

@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useConfig } from '../hooks';
 
 export interface RangeInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -18,11 +17,10 @@ export default function RangeInput({
   value = 0,
   ...restProps
 }: RangeInputProps) {
-  const { prefix }: any = useConfig();
   return (
     <input
       {...restProps}
-      className={clsx(`${prefix}-range-input`, className)}
+      className={clsx('jpk-range-input', className)}
       type='range'
       min={min}
       max={max}

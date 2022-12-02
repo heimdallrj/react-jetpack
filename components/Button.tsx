@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import React from 'react';
-import { useConfig } from '../hooks';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,15 +18,14 @@ export default function Button({
   variant = 'contained',
   ...restProps
 }: ButtonProps) {
-  const { prefix }: any = useConfig();
   return (
     <button
       {...restProps}
       type={type}
       className={clsx(
-        `${prefix}-btn`,
-        `${prefix}-btn__${variant}`,
-        `${prefix}-btn__${variant}--${size}`,
+        'jpk-btn',
+        `jpk-btn__${variant}`,
+        `jpk-btn__${variant}--${size}`,
         className
       )}
     >

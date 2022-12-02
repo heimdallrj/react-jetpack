@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import { useConfig } from '../hooks';
 
 enum LabelPosMap {
   right = 'row',
@@ -33,13 +32,12 @@ export default function Radio({
   value,
   ...restProps
 }: Props) {
-  const { prefix }: any = useConfig();
   return (
     <div
       className={clsx(
-        `${prefix}-radio`,
-        checked && `${prefix}-radio--checked`,
-        disabled && `${prefix}-radio--disabled`,
+        'jpk-radio',
+        checked && 'jpk-radio--checked',
+        disabled && 'jpk-radio--disabled',
         className
       )}
       style={{ ...style, flexDirection: LabelPosMap[labelPosition] }}
@@ -47,7 +45,7 @@ export default function Radio({
       <input
         {...restProps}
         checked={checked}
-        className={`${prefix}-radio__input`}
+        className='jpk-radio__input'
         disabled={disabled}
         name={name}
         style={inputStyle}
@@ -55,7 +53,7 @@ export default function Radio({
         value={value}
       />
       {label && (
-        <label className={`${prefix}-radio__label`} htmlFor={name}>
+        <label className='jpk-radio__label' htmlFor={name}>
           {label}
         </label>
       )}
