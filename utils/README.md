@@ -2,7 +2,18 @@
 
 A set of useful utils listed here.
 
-### `[Rollbar]`(https://www.npmjs.com/package/rollbar)
+## ToC
+
+<!--ts-->
+
+- [Rollbar](#rollbar)
+- [React GA](#react-ga)
+- [js-cookie](#js-cookie)
+- [hotjar](#hotjar)
+- [firebase](#firebase)
+<!--te-->
+
+### [`Rollbar`](https://www.npmjs.com/package/rollbar)
 
 ```bash
 npm i -S rollbar // yarn add
@@ -10,7 +21,6 @@ npm i -S rollbar // yarn add
 
 ```ts
 // @jetpack/react/utils/rollbar.js
-
 import Rollbar from 'rollbar';
 
 export const init = ({ rollbarToken }) => {
@@ -35,7 +45,7 @@ export const debug = (...args) => window._rb.debug(args.join('\r\n'));
 export const error = (...args) => window._rb.error(args.join('\r\n'));
 ```
 
-### `[React GA]`(https://www.npmjs.com/package/react-ga)
+### [`React GA`](https://www.npmjs.com/package/react-ga)
 
 ```bash
 npm i -S react-ga // yarn add
@@ -43,7 +53,6 @@ npm i -S react-ga // yarn add
 
 ```js
 // @jetpack/react/utils/ga.js
-
 import ReactGA from 'react-ga';
 
 export const event = {
@@ -79,7 +88,7 @@ export const outboundLink = (args, hitCallback) =>
 export const exception = (args) => ReactGA.exception(args);
 ```
 
-### `[js-cookie]`(https://www.npmjs.com/package/js-cookie)
+### [`js-cookie`](https://www.npmjs.com/package/js-cookie)
 
 ```bash
 npm i -S js-cookie // yarn add
@@ -87,7 +96,6 @@ npm i -S js-cookie // yarn add
 
 ```ts
 // @jetpack/react/utils/cookie.js
-
 import Cookie from 'js-cookie';
 
 export const setCookie = (cookieName, cookieValue, expires = 30) =>
@@ -102,7 +110,7 @@ export const getCookie = (cookieName) => Cookie.get(cookieName);
 export const removeCookie = (cookieName) => Cookie.remove(cookieName);
 ```
 
-### `[hotjar]`(https://www.npmjs.com/package/react-hotjar)
+### [`hotjar`](https://www.npmjs.com/package/react-hotjar)
 
 ```bash
 npm i -S react-hotjar // yarn add
@@ -110,7 +118,6 @@ npm i -S react-hotjar // yarn add
 
 ```js
 // @jetpack/react/utils/hotjar.js
-
 import { hotjar } from 'react-hotjar';
 
 export const initialize = ({ hjID, hjVersion }) =>
@@ -129,21 +136,22 @@ npm i firebase // yarn add
 
 ```js
 // @jetpack/react/utils/firebase/config.js
-
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { firebaseConfig as config } from 'config';
 
 // Initialize Firebase
-firebase.initializeApp(config);
+export const init = (config) => {
+  firebase.initializeApp(config);
+  return firebase;
+};
 
 export default firebase;
 ```
 
 ```js
 // @jetpack/react/utils/firebase/auth.js
-
 import firebase from './config';
 
 const recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha-container');
