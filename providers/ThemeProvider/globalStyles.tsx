@@ -66,40 +66,12 @@ export const GlobalStyle = createGlobalStyle`
   sub {}
   summary {}
   sup {}
-  table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    thead tr {
-      background-color: ${({ colors, mode }) => colors.primary[mode]};
-      color: #ffffff;
-      text-align: left;
-    }
-    th, td { padding: 12px 15px; }
-    tbody {
-      tr {
-        border-bottom: 1px solid #dddddd;
-      }
-      tr:nth-of-type(even) {
-        background-color: #f3f3f3;
-      }
-      tr:last-of-type {
-        border-bottom: 2px solid ${({ colors, mode }) => colors.primary[mode]};
-      }
-      tr.active-row {
-        font-weight: bold;
-        color: ${({ colors, mode }) => colors.primary[mode]};
-      }
-    } 
-  }
+  table {}
   time {}
   ul {}
   ul li {}
 
-  /* Custom:Accordion */
+  /* Custom: Accordion */
   .jpk-accordion {
     display: flex;
     flex-direction: column;
@@ -123,7 +95,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* Custom:Button */
+  /* Custom: Button */
   .jpk-btn {
     border-radius: 4px;
     &__contained {
@@ -202,7 +174,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* Custom:Checkbox */
+  /* Custom: Checkbox */
   .jpk-checkbox {
     display: flex;
     align-items: center;
@@ -217,7 +189,7 @@ export const GlobalStyle = createGlobalStyle`
     &__label {}
   }
 
-  /* Custom:TextInput */
+  /* Custom: TextInput */
   .jpk-text-input {
     display: flex;
     align-items: center;
@@ -230,7 +202,7 @@ export const GlobalStyle = createGlobalStyle`
     &__input {}
   }
 
-  /* Custom:SearchInput */
+  /* Custom: SearchInput */
   .jpk-search-input {
     display: flex;
     border: 1px solid;
@@ -246,7 +218,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* Custom:Search Form */
+  /* Custom: Search Form */
   .jpk-search-form {
     display: flex;
 
@@ -271,7 +243,38 @@ export const GlobalStyle = createGlobalStyle`
     &__menu-item {}
   }
 
-  /* Custom:Radio */
+  /* Custom: Table */
+  .jpk-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    thead tr {
+      background-color: ${({ colors, mode }) => colors.primary[mode]};
+      color: #ffffff;
+      text-align: left;
+    }
+    th, td { padding: 12px 15px; }
+    tbody {
+      tr {
+        border-bottom: 1px solid #dddddd;
+      }
+      tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      tr:last-of-type {
+        border-bottom: 2px solid ${({ colors, mode }) => colors.primary[mode]};
+      }
+      tr.active-row {
+        font-weight: bold;
+        color: ${({ colors, mode }) => colors.primary[mode]};
+      }
+    } 
+  }
+
+  /* Custom: Radio */
   .jpk-radio {
     display: flex;
     align-items: center;
@@ -286,7 +289,7 @@ export const GlobalStyle = createGlobalStyle`
     &__label {}
   }
 
-  /* Custom:Tabs */
+  /* Custom: Tabs */
   .jpk-tabs {
     .jpk-tab {
       border-bottom: 1px solid #ccc;

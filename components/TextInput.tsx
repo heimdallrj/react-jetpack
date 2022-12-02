@@ -1,5 +1,15 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
+import styled from 'styled-components';
+
+type BlockProps = {
+  $flexDirection: string;
+};
+export const Block = styled.div<BlockProps>`
+  display: flex;
+  flex-direction: ${(props) => props.$flexDirection};
+  align-items: center;
+`;
 
 enum LabelPosMap {
   right = 'row',
@@ -8,7 +18,7 @@ enum LabelPosMap {
   top = 'column-reverse',
 }
 
-type InputTypes =
+export type InputTypes =
   | 'color'
   | 'date'
   | 'datetime-local'
@@ -47,13 +57,14 @@ export default function TextInput({
   ...restProps
 }: TextInputProps) {
   return (
-    <div
+    <Block
+      $flexDirection={LabelPosMap[labelPosition]}
       className={clsx(
         'jpk-text-input',
         disabled && 'jpk-text-input--disabled',
         className
       )}
-      style={{ ...style, flexDirection: LabelPosMap[labelPosition] }}
+      style={style}
     >
       {label && (
         <label htmlFor={name} className='jpk-text-input__label'>
@@ -69,6 +80,6 @@ export default function TextInput({
         type={type}
         value={value}
       />
-    </div>
+    </Block>
   );
 }
