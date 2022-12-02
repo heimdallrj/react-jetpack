@@ -1,6 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
+import { CSSProperties } from '../types';
 
-interface Props
+export type BlockVariant =
+  | 'aside'
+  | 'article'
+  | 'code'
+  | 'details'
+  | 'div'
+  | 'figcaption'
+  | 'figure'
+  | 'footer'
+  | 'header'
+  | 'main'
+  | 'mark'
+  | 'nav'
+  | 'pre'
+  | 'section'
+  | 'summary'
+  | 'time';
+
+export interface BlockProps
   extends React.ButtonHTMLAttributes<
     | HTMLDivElement
     | HTMLDetailsElement
@@ -8,149 +28,131 @@ interface Props
     | HTMLSelectElement
     | HTMLTimeElement
   > {
-  alignContent?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'initial'
-    | 'inherit';
-  alignItems?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
-  alignSelf?:
-    | 'auto'
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
-  children: React.ReactNode;
-  className?: string;
-  display?:
-    | 'inline'
-    | 'block'
-    | 'contents'
-    | 'flex'
-    | 'grid'
-    | 'inline-block'
-    | 'inline-flex'
-    | 'inline-grid'
-    | 'inline-table'
-    | 'list-item'
-    | 'run-in'
-    | 'table'
-    | 'table-caption'
-    | 'table-column-group'
-    | 'table-header-group'
-    | 'table-footer-group'
-    | 'table-row-group'
-    | 'table-cell'
-    | 'table-column'
-    | 'table-row'
-    | 'none'
-    | 'initial'
-    | 'inherit';
-  flexBasis?: number | 'auto' | 'initial' | 'inherit';
-  flexDirection?:
-    | 'row'
-    | 'row-reverse'
-    | 'column'
-    | 'column-reverse'
-    | 'initial'
-    | 'inherit';
-  flexGrow?: number | 'initial' | 'inherit';
-  flexShrink?: number | 'initial' | 'inherit';
-  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse' | 'initial' | 'inherit';
+  alignContent?: CSSProperties.AlignContent;
+  alignItems?: CSSProperties.AlignItems;
+  alignSelf?: CSSProperties.AlignSelf;
+  columnGap?: number;
+  display?: CSSProperties.Display;
+  flexBasis?: CSSProperties.FlexBasis;
+  flexDirection?: CSSProperties.FlexDirection;
+  flexGrow?: CSSProperties.FlexGrow;
+  flexShrink?: CSSProperties.FlexShrink;
+  flexWrap?: CSSProperties.FlexWrap;
   gap?: number;
-  justifyContent?:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'initial'
-    | 'inherit';
-  justifySelf?:
-    | 'auto'
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
-  style?: React.CSSProperties;
-  variant?:
-    | 'aside'
-    | 'article'
-    | 'code'
-    | 'details'
-    | 'div'
-    | 'figcaption'
-    | 'figure'
-    | 'footer'
-    | 'header'
-    | 'main'
-    | 'mark'
-    | 'nav'
-    | 'pre'
-    | 'section'
-    | 'summary'
-    | 'time';
+  justifyContent?: CSSProperties.JustifyContent;
+  justifySelf?: CSSProperties.JustifySelf;
+  margin?: number;
+  marginTop?: number;
+  marginRight?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+  padding?: number;
+  paddingTop?: number;
+  paddingRight?: number;
+  paddingBottom?: number;
+  paddingLeft?: number;
+  rowGap?: number;
+  unit?: CSSProperties.Units; // @todo: allow this to configure in theme level
+  variant?: BlockVariant;
 }
+
+const Element = styled.div<any>`
+  align-content: ${({ $alignContent }) => $alignContent};
+  align-items: ${({ $alignItems }) => $alignItems};
+  align-self: ${({ $alignSelf }) => $alignSelf};
+  ${({ $columnGap, $unit }) =>
+    $columnGap && `column-gap: ${$columnGap}${$unit};`}
+  display: ${({ $display }) => $display};
+  flex-basis: ${({ $flexBasis }) => $flexBasis};
+  flex-direction: ${({ $flexDirection }) => $flexDirection};
+  flex-grow: ${({ $flexGrow }) => $flexGrow};
+  flex-shrink: ${({ $flexShrink }) => $flexShrink};
+  flex-wrap: ${({ $flexWrap }) => $flexWrap};
+  ${({ $gap, $unit }) => $gap && `gap: ${$gap}${$unit};`}
+  justify-content: ${({ $justifyContent }) => $justifyContent};
+  justify-self: ${({ $justifySelf }) => $justifySelf};
+  ${({ $margin, $unit }) => $margin && `margin: ${$margin}${$unit};`}
+  ${({ $marginTop, $unit }) =>
+    $marginTop && `margin-top: ${$marginTop}${$unit};`}
+  ${({ $marginRight, $unit }) =>
+    $marginRight && `margin-right: ${$marginRight}${$unit};`}
+  ${({ $marginBottom, $unit }) =>
+    $marginBottom && `margin-bottom: ${$marginBottom}${$unit};`}
+  ${({ $marginLeft, $unit }) =>
+    $marginLeft && `margin-left: ${$marginLeft}${$unit};`}
+  ${({ $padding, $unit }) => $padding && `padding: ${$padding}${$unit};`}
+  ${({ $paddingTop, $unit }) =>
+    $paddingTop && `padding-top: ${$paddingTop}${$unit};`}
+  ${({ $paddingRight, $unit }) =>
+    $paddingRight && `padding-right: ${$paddingRight}${$unit};`}
+  ${({ $paddingBottom, $unit }) =>
+    $paddingBottom && `padding-bottom: ${$paddingBottom}${$unit};`}
+  ${({ $paddingLeft, $unit }) =>
+    $paddingLeft && `padding-left: ${$paddingLeft}${$unit};`}
+    ${({ $rowGap, $unit }) => $rowGap && `row-gap: ${$rowGap}${$unit};`}
+`;
 
 export default function Block({
   alignContent,
   alignItems,
   alignSelf,
   children,
-  className,
-  display,
+  columnGap,
+  display = undefined,
   flexBasis,
   flexDirection,
   flexGrow,
   flexShrink,
   flexWrap,
   gap,
+  rowGap,
   justifyContent,
   justifySelf,
-  style = {},
+  margin,
+  marginTop,
+  marginRight,
+  marginBottom,
+  marginLeft,
+  padding,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
+  paddingLeft,
+  unit = 'px',
   variant = 'div',
   ...restProps
-}: Props) {
-  return React.createElement(
-    variant,
-    {
-      ...restProps,
-      className,
-      style: {
-        ...style,
-        alignContent,
-        alignItems,
-        alignSelf,
-        display,
-        flexBasis,
-        flexDirection,
-        flexGrow,
-        flexShrink,
-        flexWrap,
-        gap,
-        justifyContent,
-        justifySelf,
-      },
-    },
-    children
+}: BlockProps) {
+  return (
+    <Element
+      {...restProps}
+      as={variant}
+      $alignContent={alignContent}
+      $alignItems={alignItems}
+      $alignSelf={alignSelf}
+      $columnGap={columnGap}
+      $display={display}
+      $flexBasis={flexBasis}
+      $flexDirection={flexDirection}
+      $flexGrow={flexGrow}
+      $flexShrink={flexShrink}
+      $flexWrap={flexWrap}
+      $gap={gap}
+      $justifyContent={justifyContent}
+      $justifySelf={justifySelf}
+      $marginmargin
+      $marginTop={marginTop}
+      $marginRight={marginRight}
+      $marginBottom={marginBottom}
+      $marginLeft={marginLeft}
+      $padding={padding}
+      $paddingTop={paddingTop}
+      $paddingRight={paddingRight}
+      $paddingBottom={paddingBottom}
+      $paddingLeft={paddingLeft}
+      $rowGap={rowGap}
+      $unit={unit}
+    >
+      {children}
+    </Element>
   );
 }
