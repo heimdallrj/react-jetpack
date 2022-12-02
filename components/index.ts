@@ -7,6 +7,7 @@ export { default as ImageInput } from './ImageInput';
 export { default as Radio } from './Radio';
 export { default as RangeInput } from './RangeInput';
 export { default as SearchInput } from './SearchInput';
+export { default as Select } from './Select';
 export * from './Table';
 export * from './Tabs';
 export { default as Text } from './Text';
