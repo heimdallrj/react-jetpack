@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --colors-primary: #12355B;
+    --colors-primary: #4f53b1;
     --colors-secondary: #420039;
     --colors-accent: gray;
     --colors-tertiary: #D72638
@@ -14,7 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     --colors-warning: rgb(255, 244, 229);
     --colors-info: rgb(229, 246, 253);
     --colors-success: rgb(237, 247, 237);
-    --colors-disabled: var(--colors-disabled);
+    --colors-disabled: rgba(239, 239, 239, 0.3);
+    --colors-a-hover: #ccc;
     --fonts-primary: 'Montserrat', sans-serif;
   }
   html {}
