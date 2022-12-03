@@ -2,33 +2,33 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+  :root {
+    --colors-primary: #12355B;
+    --colors-secondary: #420039;
+    --colors-accent: gray;
+    --colors-tertiary: #D72638
+    --colors-quaternary: #FFFFFF
+    --colors-quinary: #FF570A
+    --colors-bg: white;
+    --colors-error: rgb(253, 237, 237);
+    --colors-warning: rgb(255, 244, 229);
+    --colors-info: rgb(229, 246, 253);
+    --colors-success: rgb(237, 247, 237);
+    --colors-disabled: var(--colors-disabled);
+    --fonts-primary: 'Montserrat', sans-serif;
+  }
   html {}
   aside {}
   article {}
   b {}
   body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--fonts-primary);
+    background-color: var(--colors-bg);
   }
-  button {
-    appearance: none;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-flex;
-    font-size: 0.875rem;
-    font-weight: 500;
-    justify-content: center;
-    letter-spacing: 0.02857em;
-    line-height: 1.75;
-    min-width: 64px;
-    outline: 0px;
-    position: relative;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    user-select: none;
-    vertical-align: middle; 
-  }
+  button {}
   button:disabled,
   button[disabled] {
-    color: rgba(0, 0, 0, 0.26);
+    color: var(--colors-disabled);
     cursor: default;
   }
   code {}
@@ -46,7 +46,7 @@ export const GlobalStyle = createGlobalStyle`
   input[type='checkbox'] {}
   input:disabled,
   input[disabled] {
-    color: rgba(0, 0, 0, 0.26);
+    color: var(--colors-disabled);
     cursor: default;
   }
   ins {}
@@ -79,11 +79,8 @@ export const GlobalStyle = createGlobalStyle`
 
     .jpk-accordion__section {}
     .jpk-accordion__summary {
-      background: ${({ colors, mode }) => colors.primary[mode]};
-      box-shadow: 0px 1px 1px -1px ${({ colors, mode }) =>
-        colors.primary[
-          mode
-        ]}, 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+      background: var(--colors-primary);
+      box-shadow: 0px 1px 1px -1px var(--colors-primary), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -97,14 +94,27 @@ export const GlobalStyle = createGlobalStyle`
 
   /* Custom: Button */
   .jpk-btn {
+    appearance: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.875rem;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: 0.02857em;
+    line-height: 1.75;
+    min-width: 64px;
+    outline: 0px;
+    position: relative;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    user-select: none;
+    vertical-align: middle; 
     border-radius: 4px;
+
     &__contained {
-      background-color: ${({ colors, mode }) => colors.primary[mode]};
+      background-color: var(--colors-primary);
       border: 0px;
-      box-shadow: ${({ colors, mode }) =>
-        colors.primary[
-          mode
-        ]} 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+      box-shadow: var(--colors-primary) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
       color: rgb(255, 255, 255);
 
       &--small {
@@ -121,14 +131,14 @@ export const GlobalStyle = createGlobalStyle`
       &[disabled] {
         background-color: rgba(0, 0, 0, 0.12);
         box-shadow: none;
-        color: rgba(0, 0, 0, 0.26);
+        color: var(--colors-disabled);
       }
     }
     &__outlined {
       background-color: transparent;
       border: 1px solid rgba(25, 118, 210, 0.5);
       box-shadow: none;
-      color: ${({ colors, mode }) => colors.primary[mode]};
+      color: var(--colors-primary);
 
       &--small {
         padding: 3px 9px;
@@ -142,15 +152,15 @@ export const GlobalStyle = createGlobalStyle`
 
       &:disabled,
       &[disabled] {
-        border: 1px solid rgba(0, 0, 0, 0.26);
-        color: rgba(0, 0, 0, 0.26);
+        border: 1px solid var(--colors-disabled);
+        color: var(--colors-disabled);
       }
     }
     &__text {
       background-color: transparent;
       border: 0px;
       border-radius: 4px;
-      color: ${({ colors, mode }) => colors.primary[mode]};
+      color: var(--colors-primary);
 
       &--small {
         padding: 4px 5px;
@@ -164,7 +174,7 @@ export const GlobalStyle = createGlobalStyle`
 
       &:disabled,
       &[disabled] {
-        color: rgba(0, 0, 0, 0.26);
+        color: var(--colors-disabled);
       }
 
       &:hover {
@@ -252,7 +262,7 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     thead tr {
-      background-color: ${({ colors, mode }) => colors.primary[mode]};
+      background-color: var(--colors-primary);
       color: #ffffff;
       text-align: left;
     }
@@ -265,11 +275,11 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #f3f3f3;
       }
       tr:last-of-type {
-        border-bottom: 2px solid ${({ colors, mode }) => colors.primary[mode]};
+        border-bottom: 2px solid var(--colors-primary);
       }
       tr.active-row {
         font-weight: bold;
-        color: ${({ colors, mode }) => colors.primary[mode]};
+        color: var(--colors-primary);
       }
     } 
   }
