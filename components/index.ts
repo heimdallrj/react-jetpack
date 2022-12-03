@@ -3,6 +3,7 @@ export { default as Alert } from './Alert';
 export { default as Avatar } from './Avatar';
 export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
+export { default as ContentLoader } from './ContentLoader';
 export { default as FileInput } from './FileInput';
 export { default as Image } from './Image';
 export { default as ImageInput } from './ImageInput';
