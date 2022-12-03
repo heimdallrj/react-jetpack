@@ -13,9 +13,9 @@ export const Block = styled.div<BlockProps>`
 
 enum LabelPosMap {
   right = 'row',
-  bottom = 'column',
+  top = 'column',
   left = 'row-reverse',
-  top = 'column-reverse',
+  bottom = 'column-reverse',
 }
 
 export type InputTypes =
