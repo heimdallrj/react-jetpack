@@ -12,13 +12,16 @@ export type BlockVariant =
   | 'figure'
   | 'footer'
   | 'header'
+  | 'li'
   | 'main'
   | 'mark'
   | 'nav'
+  | 'ol'
   | 'pre'
   | 'section'
   | 'summary'
-  | 'time';
+  | 'time'
+  | 'ul';
 
 export interface BlockProps
   extends React.ButtonHTMLAttributes<
@@ -33,6 +36,7 @@ export interface BlockProps
   alignSelf?: CSSProperties.AlignSelf;
   columnGap?: number;
   display?: CSSProperties.Display;
+  flex?: number | string;
   flexBasis?: CSSProperties.FlexBasis;
   flexDirection?: CSSProperties.FlexDirection;
   flexGrow?: CSSProperties.FlexGrow;
@@ -63,6 +67,7 @@ const Element = styled.div<any>`
   ${({ $columnGap, $unit }) =>
     $columnGap && `column-gap: ${$columnGap}${$unit};`}
   display: ${({ $display }) => $display};
+  ${({ $flex }) => $flex && `flex: ${$flex};`}
   flex-basis: ${({ $flexBasis }) => $flexBasis};
   flex-direction: ${({ $flexDirection }) => $flexDirection};
   flex-grow: ${({ $flexGrow }) => $flexGrow};
@@ -99,6 +104,7 @@ export default function Block({
   children,
   columnGap,
   display = undefined,
+  flex,
   flexBasis,
   flexDirection,
   flexGrow,
@@ -131,6 +137,7 @@ export default function Block({
       $alignSelf={alignSelf}
       $columnGap={columnGap}
       $display={display}
+      $flex={flex}
       $flexBasis={flexBasis}
       $flexDirection={flexDirection}
       $flexGrow={flexGrow}

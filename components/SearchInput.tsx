@@ -1,5 +1,28 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
+import styled from 'styled-components';
+
+import Block from '../layout/Block';
+import SearchIcon from '../icons/Search';
+
+const Form = styled.form`
+  width: 100%;
+  min-height: 35px;
+
+  svg {
+    padding: 0 5px;
+  }
+
+  button {
+    cursor: pointer;
+    width: 80px;
+  }
+
+  input {
+    flex: 1;
+    padding: 0 10px;
+  }
+`;
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   action?: string;
@@ -19,7 +42,7 @@ export default function SearchInput({
   ...restProps
 }: SearchInputProps) {
   return (
-    <form
+    <Form
       action={action}
       className={clsx(
         'jpk-search-form',
@@ -28,14 +51,18 @@ export default function SearchInput({
       )}
       style={style}
     >
-      <input
-        {...restProps}
-        className='jpk-search-form__input'
-        disabled={disabled}
-        name='q'
-        style={inputStyle}
-        type='search'
-      />
+      <Block variant='section' display='flex' flex={1}>
+        <SearchIcon width='24px' />
+        <input
+          {...restProps}
+          autoComplete='off'
+          className='jpk-search-form__input'
+          disabled={disabled}
+          name='q'
+          style={inputStyle}
+          type='search'
+        />
+      </Block>
       <button
         className='jpk-search-form__btn'
         type='submit'
@@ -43,6 +70,6 @@ export default function SearchInput({
       >
         <span className='jpk-search-form__icon'>Search</span>
       </button>
-    </form>
+    </Form>
   );
 }

@@ -8,6 +8,7 @@ export { default as ContentLoader } from './ContentLoader';
 export { default as FileInput } from './FileInput';
 export { default as Image } from './Image';
 export { default as ImageInput } from './ImageInput';
+export * from './List';
 export { default as Radio } from './Radio';
 export { default as RangeInput } from './RangeInput';
 export { default as SearchInput } from './SearchInput';
