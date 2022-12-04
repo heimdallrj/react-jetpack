@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     --colors-tertiary: #D72638
     --colors-quaternary: #FFFFFF
     --colors-quinary: #FF570A
-    --colors-bg: white;
+    --colors-bg-primary: white;
+    --colors-text-primary: #000000;
     --colors-error: rgb(253, 237, 237);
     --colors-warning: rgb(255, 244, 229);
     --colors-info: rgb(229, 246, 253);
@@ -17,14 +18,20 @@ export const GlobalStyle = createGlobalStyle`
     --colors-disabled: rgba(239, 239, 239, 0.3);
     --colors-a-hover: #ccc;
     --fonts-primary: 'Montserrat', sans-serif;
+    --fonts-size-primary: 14px;
   }
   html {}
+  a { 
+    text-decoration: none;
+  }
   aside {}
   article {}
   b {}
   body {
     font-family: var(--fonts-primary);
-    background-color: var(--colors-bg);
+    font-size: var(--fonts-size-primary);
+    background-color: var(--colors-bg-primary);
+    color: var(--colors-text-primary);
   }
   button {}
   button:disabled,
