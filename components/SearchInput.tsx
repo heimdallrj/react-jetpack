@@ -9,6 +9,10 @@ const Form = styled.form`
   width: 100%;
   min-height: 35px;
 
+  section {
+    flex: 1;
+  }
+
   svg {
     padding: 0 5px;
   }

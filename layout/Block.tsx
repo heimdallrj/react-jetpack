@@ -62,6 +62,10 @@ export interface BlockProps
   marginRight?: Margin;
   marginBottom?: Margin;
   marginLeft?: Margin;
+  maxHeight?: number;
+  maxWidth?: number;
+  minHeight?: number;
+  minWidth?: number;
   padding?: number;
   paddingTop?: number;
   paddingRight?: number;
@@ -94,6 +98,11 @@ const Element = styled.div<any>`
   margin-right: ${(props) => props.$marginRight};
   margin-bottom: ${(props) => props.$marginBottom};
   margin-left: ${(props) => props.$marginLeft};
+  margin-left: ${(props) => props.$marginLeft};
+  max-height: ${(props) => props.$maxHeight};
+  max-width: ${(props) => props.$maxWidth};
+  min-height: ${(props) => props.$minHeight};
+  min-width: ${(props) => props.$minWidth};
   padding: ${(props) => props.$padding};
   padding-top: ${(props) => props.$paddingTop};
   padding-right: ${(props) => props.$paddingRight};
@@ -126,6 +135,10 @@ export default function Block({
   marginRight,
   marginBottom,
   marginLeft,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
   padding,
   paddingTop,
   paddingRight,
@@ -160,6 +173,10 @@ export default function Block({
       $marginRight={withUnit(marginRight, unit)}
       $marginBottom={withUnit(marginBottom, unit)}
       $marginLeft={withUnit(marginLeft, unit)}
+      $maxHeight={withUnit(maxHeight, unit)}
+      $maxWidth={withUnit(maxWidth, unit)}
+      $minHeight={withUnit(minHeight, unit)}
+      $minWidth={withUnit(minWidth, unit)}
       $padding={withUnit(padding, unit)}
       $paddingTop={withUnit(paddingTop, unit)}
       $paddingRight={withUnit(paddingRight, unit)}
