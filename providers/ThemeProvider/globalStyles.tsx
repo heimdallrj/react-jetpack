@@ -209,15 +209,9 @@ export const GlobalStyle = createGlobalStyle`
 
   /* Custom: TextInput */
   .jpk-text-input {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-
-    &--disabled {
-      color: #d1d1d1;
-    }
-
     &__input {}
+    &__label {}
+    &--disabled {}
   }
 
   /* Custom: SearchInput */

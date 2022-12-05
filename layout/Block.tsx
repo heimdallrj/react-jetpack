@@ -2,6 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { CSSProperties } from '../types';
 
+const withUnit = (
+  value: undefined | string | number,
+  unit: CSSProperties.Units
+) => {
+  if (!value) return undefined;
+  if (typeof value === 'number') return `${value}${unit}`;
+  return value;
+};
+
 export type BlockVariant =
   | 'aside'
   | 'article'
@@ -23,6 +32,8 @@ export type BlockVariant =
   | 'time'
   | 'ul';
 
+export type Margin = 'auto' | number;
+
 export interface BlockProps
   extends React.ButtonHTMLAttributes<
     | HTMLDivElement
@@ -42,14 +53,15 @@ export interface BlockProps
   flexGrow?: CSSProperties.FlexGrow;
   flexShrink?: CSSProperties.FlexShrink;
   flexWrap?: CSSProperties.FlexWrap;
-  gap?: number;
+  gap?: number | string;
+  height?: number;
   justifyContent?: CSSProperties.JustifyContent;
   justifySelf?: CSSProperties.JustifySelf;
-  margin?: number;
-  marginTop?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginLeft?: number;
+  margin?: Margin;
+  marginTop?: Margin;
+  marginRight?: Margin;
+  marginBottom?: Margin;
+  marginLeft?: Margin;
   padding?: number;
   paddingTop?: number;
   paddingRight?: number;
@@ -58,43 +70,37 @@ export interface BlockProps
   rowGap?: number;
   unit?: CSSProperties.Units; // @todo: allow this to configure in theme level
   variant?: BlockVariant;
+  width?: number;
 }
 
 const Element = styled.div<any>`
   align-content: ${({ $alignContent }) => $alignContent};
   align-items: ${({ $alignItems }) => $alignItems};
   align-self: ${({ $alignSelf }) => $alignSelf};
-  ${({ $columnGap, $unit }) =>
-    $columnGap && `column-gap: ${$columnGap}${$unit};`}
+  column-gap: ${(props) => props.$columnGap};
   display: ${({ $display }) => $display};
-  ${({ $flex }) => $flex && `flex: ${$flex};`}
+  flex: ${(props) => props.$flex}
   flex-basis: ${({ $flexBasis }) => $flexBasis};
   flex-direction: ${({ $flexDirection }) => $flexDirection};
   flex-grow: ${({ $flexGrow }) => $flexGrow};
   flex-shrink: ${({ $flexShrink }) => $flexShrink};
   flex-wrap: ${({ $flexWrap }) => $flexWrap};
-  ${({ $gap, $unit }) => $gap && `gap: ${$gap}${$unit};`}
+  gap: ${(props) => props.$gap};
+  height: ${(props) => props.$height};
   justify-content: ${({ $justifyContent }) => $justifyContent};
   justify-self: ${({ $justifySelf }) => $justifySelf};
-  ${({ $margin, $unit }) => $margin && `margin: ${$margin}${$unit};`}
-  ${({ $marginTop, $unit }) =>
-    $marginTop && `margin-top: ${$marginTop}${$unit};`}
-  ${({ $marginRight, $unit }) =>
-    $marginRight && `margin-right: ${$marginRight}${$unit};`}
-  ${({ $marginBottom, $unit }) =>
-    $marginBottom && `margin-bottom: ${$marginBottom}${$unit};`}
-  ${({ $marginLeft, $unit }) =>
-    $marginLeft && `margin-left: ${$marginLeft}${$unit};`}
-  ${({ $padding, $unit }) => $padding && `padding: ${$padding}${$unit};`}
-  ${({ $paddingTop, $unit }) =>
-    $paddingTop && `padding-top: ${$paddingTop}${$unit};`}
-  ${({ $paddingRight, $unit }) =>
-    $paddingRight && `padding-right: ${$paddingRight}${$unit};`}
-  ${({ $paddingBottom, $unit }) =>
-    $paddingBottom && `padding-bottom: ${$paddingBottom}${$unit};`}
-  ${({ $paddingLeft, $unit }) =>
-    $paddingLeft && `padding-left: ${$paddingLeft}${$unit};`}
-    ${({ $rowGap, $unit }) => $rowGap && `row-gap: ${$rowGap}${$unit};`}
+  margin: ${(props) => props.$margin};
+  margin-top: ${(props) => props.$marginTop};
+  margin-right: ${(props) => props.$marginRight};
+  margin-bottom: ${(props) => props.$marginBottom};
+  margin-left: ${(props) => props.$marginLeft};
+  padding: ${(props) => props.$padding};
+  padding-top: ${(props) => props.$paddingTop};
+  padding-right: ${(props) => props.$paddingRight};
+  padding-bottom: ${(props) => props.$paddingBottom};
+  padding-left: ${(props) => props.$paddingLeft};
+  row-gap: ${(props) => props.$rowGap};
+  width: ${(props) => props.$width};
 `;
 
 export default function Block({
@@ -111,6 +117,7 @@ export default function Block({
   flexShrink,
   flexWrap,
   gap,
+  height,
   rowGap,
   justifyContent,
   justifySelf,
@@ -126,6 +133,7 @@ export default function Block({
   paddingLeft,
   unit = 'px',
   variant = 'div',
+  width,
   ...restProps
 }: BlockProps) {
   return (
@@ -135,7 +143,7 @@ export default function Block({
       $alignContent={alignContent}
       $alignItems={alignItems}
       $alignSelf={alignSelf}
-      $columnGap={columnGap}
+      $columnGap={withUnit(columnGap, unit)}
       $display={display}
       $flex={flex}
       $flexBasis={flexBasis}
@@ -143,21 +151,22 @@ export default function Block({
       $flexGrow={flexGrow}
       $flexShrink={flexShrink}
       $flexWrap={flexWrap}
-      $gap={gap}
+      $gap={withUnit(gap, unit)}
+      $height={withUnit(height, unit)}
       $justifyContent={justifyContent}
       $justifySelf={justifySelf}
-      $marginmargin
-      $marginTop={marginTop}
-      $marginRight={marginRight}
-      $marginBottom={marginBottom}
-      $marginLeft={marginLeft}
-      $padding={padding}
-      $paddingTop={paddingTop}
-      $paddingRight={paddingRight}
-      $paddingBottom={paddingBottom}
-      $paddingLeft={paddingLeft}
-      $rowGap={rowGap}
-      $unit={unit}
+      $margin={withUnit(margin, unit)}
+      $marginTop={withUnit(marginTop, unit)}
+      $marginRight={withUnit(marginRight, unit)}
+      $marginBottom={withUnit(marginBottom, unit)}
+      $marginLeft={withUnit(marginLeft, unit)}
+      $padding={withUnit(padding, unit)}
+      $paddingTop={withUnit(paddingTop, unit)}
+      $paddingRight={withUnit(paddingRight, unit)}
+      $paddingBottom={withUnit(paddingBottom, unit)}
+      $paddingLeft={withUnit(paddingLeft, unit)}
+      $rowGap={withUnit(rowGap, unit)}
+      $width={withUnit(width, unit)}
     >
       {children}
     </Element>

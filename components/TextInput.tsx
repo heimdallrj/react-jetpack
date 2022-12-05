@@ -1,14 +1,12 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
 import styled from 'styled-components';
+import JBlock from '../layout/Block';
 
-type BlockProps = {
-  $flexDirection: string;
-};
-export const Block = styled.div<BlockProps>`
-  display: flex;
-  flex-direction: ${(props) => props.$flexDirection};
-  align-items: center;
+const Block = styled(JBlock)`
+  input {
+    padding: 6px 10px;
+  }
 `;
 
 enum LabelPosMap {
@@ -58,7 +56,9 @@ export default function TextInput({
 }: TextInputProps) {
   return (
     <Block
-      $flexDirection={LabelPosMap[labelPosition]}
+      display='flex'
+      flexDirection={LabelPosMap[labelPosition]}
+      gap={5}
       className={clsx(
         'jpk-text-input',
         disabled && 'jpk-text-input--disabled',
