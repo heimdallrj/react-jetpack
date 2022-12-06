@@ -1,22 +1,5 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import styled from 'styled-components';
-
-type BlockProps = {
-  $flexDirection: string;
-};
-export const Block = styled.div<BlockProps>`
-  display: flex;
-  flex-direction: ${(props) => props.$flexDirection};
-  align-items: center;
-`;
-
-enum LabelPosMap {
-  right = 'row',
-  bottom = 'column',
-  left = 'row-reverse',
-  top = 'column-reverse',
-}
 
 export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -25,7 +8,6 @@ export interface CheckboxProps
   disabled?: boolean;
   inputStyle?: CSSProperties;
   label?: string;
-  labelPosition?: 'right' | 'bottom' | 'left' | 'top';
   name?: string;
   style?: CSSProperties;
   value?: string;
@@ -37,15 +19,13 @@ export default function Checkbox({
   disabled = false,
   inputStyle,
   label,
-  labelPosition = 'right',
   name,
-  style = {},
+  style,
   value,
   ...restProps
 }: CheckboxProps) {
   return (
-    <Block
-      $flexDirection={LabelPosMap[labelPosition]}
+    <div
       className={clsx(
         'jpk-checkbox',
         checked && 'jpk-checkbox--checked',
@@ -69,6 +49,6 @@ export default function Checkbox({
           {label}
         </label>
       )}
-    </Block>
+    </div>
   );
 }

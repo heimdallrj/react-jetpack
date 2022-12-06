@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 
+// @todo: support for more variants
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -13,9 +15,9 @@ export interface ButtonProps
 export default function Button({
   children,
   className,
-  size = 'medium',
-  type = 'button',
-  variant = 'contained',
+  size,
+  type,
+  variant,
   ...restProps
 }: ButtonProps) {
   return (
@@ -24,8 +26,8 @@ export default function Button({
       type={type}
       className={clsx(
         'jpk-btn',
-        `jpk-btn__${variant}`,
-        `jpk-btn__${variant}--${size}`,
+        variant && `jpk-btn__${variant}`,
+        size && `jpk-btn--${size}`,
         className
       )}
     >

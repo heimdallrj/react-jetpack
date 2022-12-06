@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 
-// @todo: allow change icons
+// @todo: extends to change icons, aria-controls
+// and other accessibility stuff
 
 export type AccordionItemProps = {
-  children: string | React.ReactNode;
+  id?: string;
   summary: string;
+  children: string | React.ReactNode;
 };
 
-export function AccordionItem({ children, summary }: AccordionItemProps) {
+export function AccordionItem({ id, summary, children }: AccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className='jpk-accordion__section'>
+    <section key={id ?? summary} className='jpk-accordion__section'>
       <div
+        role='button'
+        aria-expanded={isOpen}
         className='jpk-accordion__summary'
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -24,27 +28,15 @@ export function AccordionItem({ children, summary }: AccordionItemProps) {
   );
 }
 
-export type AccordionDataProps = {
-  id?: string;
-  summary: string;
-  content: string | React.ReactNode;
-};
-
 export type AccordionProps = {
-  children: React.ReactNode;
-  data?: AccordionDataProps[];
+  children?: React.ReactNode;
+  data?: AccordionItemProps[];
 };
 
 export function Accordion({ children, data }: AccordionProps) {
   return (
     <div className='jpk-accordion'>
-      {data
-        ? data.map(({ id, summary, content }: AccordionDataProps) => (
-            <AccordionItem key={id ?? summary} summary={summary}>
-              {content}
-            </AccordionItem>
-          ))
-        : children}
+      {data ? data.map(AccordionItem) : children}
     </div>
   );
 }

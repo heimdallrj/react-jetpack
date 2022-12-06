@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --colors-primary: #4f53b1;
     --colors-secondary: #420039;
-    --colors-accent: gray;
+    --colors-accent: #cccccc;
     --colors-tertiary: #D72638
     --colors-quaternary: #FFFFFF
     --colors-quinary: #FF570A
@@ -15,7 +15,8 @@ export const GlobalStyle = createGlobalStyle`
     --colors-warning: rgb(255, 244, 229);
     --colors-info: rgb(229, 246, 253);
     --colors-success: rgb(237, 247, 237);
-    --colors-disabled: rgba(239, 239, 239, 0.3);
+    --colors-disabled: rgba(0, 0, 0, 0.12);
+    --colors-disabled-text: rgba(0, 0, 0, 0.26);
     --colors-a-hover: #ccc;
     --fonts-primary: 'Montserrat', sans-serif;
     --fonts-size-primary: 14px;
@@ -33,10 +34,11 @@ export const GlobalStyle = createGlobalStyle`
     background-color: var(--colors-bg-primary);
     color: var(--colors-text-primary);
   }
-  button {}
+  button {
+    cursor: pointer;
+  }
   button:disabled,
   button[disabled] {
-    color: var(--colors-disabled);
     cursor: default;
   }
   code {}
@@ -54,7 +56,6 @@ export const GlobalStyle = createGlobalStyle`
   input[type='checkbox'] {}
   input:disabled,
   input[disabled] {
-    color: var(--colors-disabled);
     cursor: default;
   }
   ins {}
@@ -79,45 +80,52 @@ export const GlobalStyle = createGlobalStyle`
   ul {}
   ul li {}
 
-  /* Custom: Accordion */
+  /** JAccordion, JAccordionItem */
   .jpk-accordion {
     display: flex;
     flex-direction: column;
     gap: 2px;
 
-    .jpk-accordion__section {}
-    .jpk-accordion__summary {
-      background: var(--colors-primary);
-      box-shadow: 0px 1px 1px -1px var(--colors-primary), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    &__section {}
+    &__summary {
+      align-items: center;
+      background-color: var(--colors-accent);
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       padding: 10px;
-      color: white;
     }
-    .jpk-accordion__content {
+    &__content {
       padding: 10px;
     }
   }
 
-  /* Custom: Button */
-  .jpk-btn {
-    appearance: none;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-flex;
-    font-size: 0.875rem;
-    font-weight: 500;
-    justify-content: center;
-    letter-spacing: 0.02857em;
-    line-height: 1.75;
-    min-width: 64px;
-    outline: 0px;
-    position: relative;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    user-select: none;
-    vertical-align: middle; 
+  /** JAlert */
+  .jpk-alert {
     border-radius: 4px;
+    color: rgb(95, 33, 32);
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    padding: 10px 15px;
+
+    &--error {
+      background-color: var(--colors-error);
+    }
+    &--warning {
+      background-color: var(--colors-warning);
+    }
+    &--info {
+      background-color: var(--colors-info);
+    }
+    &--success {
+      background-color: var(--colors-success);
+    }
+  }
+
+  /** JButton */
+  .jpk-btn {
+    cursor: pointer;
 
     &__contained {
       background-color: var(--colors-primary);
@@ -125,21 +133,11 @@ export const GlobalStyle = createGlobalStyle`
       box-shadow: var(--colors-primary) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
       color: rgb(255, 255, 255);
 
-      &--small {
-        padding: 4px 10px;
-      }
-      &--medium {
-        padding: 6px 16px;
-      }
-      &--large {
-        padding: 8px 22px;
-      }
-
       &:disabled,
       &[disabled] {
-        background-color: rgba(0, 0, 0, 0.12);
-        box-shadow: none;
-        color: var(--colors-disabled);
+        background-color: var(--colors-disabled);
+        box-shadow: var(--colors-disabled) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+        color: var(--colors-disabled-text);
       }
     }
     &__outlined {
@@ -148,52 +146,44 @@ export const GlobalStyle = createGlobalStyle`
       box-shadow: none;
       color: var(--colors-primary);
 
-      &--small {
-        padding: 3px 9px;
-      }
-      &--medium {
-        padding: 5px 15px;
-      }
-      &--large {
-        padding: 7px 21px;
-      }
-
       &:disabled,
       &[disabled] {
         border: 1px solid var(--colors-disabled);
-        color: var(--colors-disabled);
+        color: var(--colors-disabled-text);
       }
     }
     &__text {
       background-color: transparent;
       border: 0px;
-      border-radius: 4px;
       color: var(--colors-primary);
-
-      &--small {
-        padding: 4px 5px;
-      }
-      &--medium {
-        padding: 6px 8px;
-      }
-      &--large {
-        padding: 8px 11px;
-      }
 
       &:disabled,
       &[disabled] {
-        color: var(--colors-disabled);
+        color: var(--colors-disabled-text);
       }
+    }
 
-      &:hover {
-        background-color: rgba(25, 118, 210, 0.04);
-        text-decoration: none;
-      }
+    &--small {
+      padding: 4px 5px;
+    }
+    &--medium {
+      padding: 6px 8px;
+    }
+    &--large {
+      padding: 8px 11px;
     }
   }
 
-  /* Custom: Checkbox */
+  /** JCheckbox */
   .jpk-checkbox {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 5px
+  }
+
+  /* Custom: Checkbox */
+  .jpsk-checkbox {
     display: flex;
     align-items: center;
     gap: 5px;
