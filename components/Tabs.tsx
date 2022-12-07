@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
+// @todo: improve type definitions
+
 export const Tab = ({ title, selectedTab, onClick }: any) => {
   const selectTabHandler = () => {
     onClick(title);
@@ -9,7 +11,7 @@ export const Tab = ({ title, selectedTab, onClick }: any) => {
   return (
     <li
       className={clsx(
-        'jpk-tab__button',
+        'jpk-tab__summary',
         selectedTab === title && 'jpk-tab--active'
       )}
       onClick={selectTabHandler}
@@ -19,7 +21,11 @@ export const Tab = ({ title, selectedTab, onClick }: any) => {
   );
 };
 
-export const Tabs = ({ children }: any) => {
+export type TabsProps = {
+  children: React.ReactNode | any;
+};
+
+export const Tabs = ({ children }: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(null);
 
   useEffect(() => {
@@ -32,7 +38,7 @@ export const Tabs = ({ children }: any) => {
 
   return (
     <div className='jpk-tabs'>
-      <ol className='jpk-tab'>
+      <ol className='jpk-tab__header'>
         {children.map((child: any) => {
           const { title } = child.props;
 

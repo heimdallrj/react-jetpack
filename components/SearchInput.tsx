@@ -1,79 +1,52 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import styled from 'styled-components';
-
-import Block from '../layout/Block';
-import SearchIcon from '../icons/Search';
-
-const Form = styled.form`
-  width: 100%;
-  min-height: 35px;
-
-  section {
-    flex: 1;
-  }
-
-  svg {
-    padding: 0 5px;
-  }
-
-  button {
-    cursor: pointer;
-    width: 80px;
-  }
-
-  input {
-    flex: 1;
-    padding: 0 10px;
-  }
-`;
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   action?: string;
   className?: string;
   inputStyle?: CSSProperties;
+  name?: string;
   style?: CSSProperties;
-  onSearch?: (keyword: string) => void;
+  onSubmit?: () => void;
 }
 
 export default function SearchInput({
-  action = '/search',
+  action,
   className,
   disabled = false,
   inputStyle,
-  style = {},
-  onSearch,
+  name = 'q',
+  style,
+  onSubmit,
   ...restProps
 }: SearchInputProps) {
   return (
-    <Form
+    <form
       action={action}
       className={clsx(
-        'jpk-search-form',
-        disabled && 'jpk-search-form--disabled',
+        'jpk-search-input',
+        disabled && 'jpk-search-input--disabled',
         className
       )}
       style={style}
     >
-      <Block variant='section' display='flex' flex={1}>
-        <SearchIcon width='24px' />
-        <input
-          {...restProps}
-          autoComplete='off'
-          className='jpk-search-form__input'
-          disabled={disabled}
-          name='q'
-          style={inputStyle}
-          type='search'
-        />
-      </Block>
+      <input
+        {...restProps}
+        autoComplete='off'
+        className='jpk-search-input__input'
+        disabled={disabled}
+        name={name}
+        style={inputStyle}
+        type='search'
+      />
       <button
-        className='jpk-search-form__btn'
+        className='jpk-search-input__btn'
         type='submit'
         disabled={disabled}
+        onClick={onSubmit}
       >
-        <span className='jpk-search-form__icon'>Search</span>
+        Search
       </button>
-    </Form>
+    </form>
   );
 }

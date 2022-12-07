@@ -1,28 +1,11 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import styled from 'styled-components';
 
-type BlockProps = {
-  $flexDirection: string;
-};
-export const Block = styled.div<BlockProps>`
-  display: flex;
-  flex-direction: ${(props) => props.$flexDirection};
-  align-items: center;
-`;
+export type Option = { label: string; value: string };
 
-enum LabelPosMap {
-  right = 'row',
-  bottom = 'column-reverse',
-  left = 'row-reverse',
-  top = 'column',
-}
-
-type Option = { label: string; value: string };
-
-interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  labelPosition?: 'right' | 'bottom' | 'left' | 'top';
   inputStyle?: CSSProperties;
   options: Option[];
   style?: CSSProperties;
@@ -32,7 +15,6 @@ export default function Select({
   className,
   disabled,
   label,
-  labelPosition = 'right',
   name,
   inputStyle,
   options = [],
@@ -41,13 +23,12 @@ export default function Select({
   ...restProps
 }: SelectProps) {
   return (
-    <Block
+    <div
       className={clsx(
         'jpk-select',
         disabled && 'jpk-select--disabled',
         className
       )}
-      $flexDirection={LabelPosMap[labelPosition]}
       style={style}
     >
       {label && (
@@ -65,7 +46,7 @@ export default function Select({
       >
         {options.map((opt: Option) => (
           <option
-            className='jpk-select__menu-item'
+            className='jpk-select__menu__item'
             key={opt.value}
             value={opt.value}
           >
@@ -73,6 +54,6 @@ export default function Select({
           </option>
         ))}
       </select>
-    </Block>
+    </div>
   );
 }

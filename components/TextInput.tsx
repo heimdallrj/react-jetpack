@@ -1,20 +1,5 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
-import styled from 'styled-components';
-import JBlock from '../layout/Block';
-
-const Block = styled(JBlock)`
-  input {
-    padding: 6px 10px;
-  }
-`;
-
-enum LabelPosMap {
-  right = 'row',
-  top = 'column',
-  left = 'row-reverse',
-  bottom = 'column-reverse',
-}
 
 export type InputTypes =
   | 'color'
@@ -35,7 +20,6 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   inputStyle?: CSSProperties;
   label?: string;
-  labelPosition?: 'right' | 'bottom' | 'left' | 'top';
   name?: string;
   style?: CSSProperties;
   type?: InputTypes;
@@ -47,7 +31,6 @@ export default function TextInput({
   disabled = false,
   inputStyle,
   label,
-  labelPosition = 'right',
   name,
   style,
   type = 'text',
@@ -55,10 +38,7 @@ export default function TextInput({
   ...restProps
 }: TextInputProps) {
   return (
-    <Block
-      display='flex'
-      flexDirection={LabelPosMap[labelPosition]}
-      gap={5}
+    <div
       className={clsx(
         'jpk-text-input',
         disabled && 'jpk-text-input--disabled',
@@ -80,6 +60,6 @@ export default function TextInput({
         type={type}
         value={value}
       />
-    </Block>
+    </div>
   );
 }

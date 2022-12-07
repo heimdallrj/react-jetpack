@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 export type TextVariant =
@@ -28,6 +29,22 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
   variant?: TextVariant;
 }
 
-export default function Text({ children, variant = 'p', ...restProps }: Props) {
-  return React.createElement(variant, restProps, children);
+export default function Text({
+  children,
+  variant = 'p',
+  className,
+  ...restProps
+}: Props) {
+  return React.createElement(
+    variant,
+    {
+      ...restProps,
+      className: clsx(
+        'jpk-typography',
+        `jpk-typography__${variant}`,
+        className
+      ),
+    },
+    children
+  );
 }

@@ -28,7 +28,7 @@ export function ListItem({
   ...restProps
 }: React.HTMLAttributes<HTMLLIElement>) {
   return (
-    <li {...restProps} className={clsx('jpk-list-item', className)}>
+    <li {...restProps} className={clsx('jpk-list__item', className)}>
       {children}
     </li>
   );

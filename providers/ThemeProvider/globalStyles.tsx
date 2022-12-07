@@ -180,136 +180,146 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: row;
     gap: 5px
-  }
-
-  /* Custom: Checkbox */
-  .jpsk-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 5px;
 
     &--checked {}
-    &--disabled {
-      color: #d1d1d1;
-    }
+    &--disabled {}
 
     &__input {}
     &__label {}
   }
 
-  /* Custom: TextInput */
-  .jpk-text-input {
-    &__input {}
-    &__label {}
-    &--disabled {}
+  /** JFileInput */
+  .jpk-file-input {}
+
+  /** JList */
+  .jpk-list {
+    &__item {}
   }
 
-  /* Custom: SearchInput */
-  .jpk-search-input {
-    display: flex;
-    border: 1px solid;
-
-    &__input {
-      flex: 1;
-      border: 0;
-      padding: 0 10px;
-    }
-    &__icon {
-      cursor: pointer;
-      width: 32px;
-    }
-  }
-
-  /* Custom: Search Form */
-  .jpk-search-form {
-    display: flex;
-
-    &--disabled {}
-
-    &__input {}
-
-    &__btn {}
-
-    &__icon {}
-  }
-
-  /* Custom: Select */
-  .jpk-select {
-
-    &--disabled {}
-
-    &__label {}
-
-    &__menu {}
-
-    &__menu-item {}
-  }
-
-  /* Custom: Table */
-  .jpk-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    thead tr {
-      background-color: var(--colors-primary);
-      color: #ffffff;
-      text-align: left;
-    }
-    th, td { padding: 12px 15px; }
-    tbody {
-      tr {
-        border-bottom: 1px solid #dddddd;
-      }
-      tr:nth-of-type(even) {
-        background-color: #f3f3f3;
-      }
-      tr:last-of-type {
-        border-bottom: 2px solid var(--colors-primary);
-      }
-      tr.active-row {
-        font-weight: bold;
-        color: var(--colors-primary);
-      }
-    } 
-  }
-
-  /* Custom: Radio */
+  /** JRadio */
   .jpk-radio {
-    display: flex;
     align-items: center;
-    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px
 
     &--checked {}
-    &--disabled {
-      color: #d1d1d1;
-    }
+    &--disabled {}
 
     &__input {}
     &__label {}
   }
 
-  /* Custom: Tabs */
+  /** JRangeInput {} */
+  .jpk-range-input {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 5px
+
+    &--disabled
+  }
+
+  /** JSearchInput */
+  .jpk-search-input {
+    &--disabled {}
+
+    &__input {}
+    &__btn {}
+  }
+
+  /** JSelect */
+  .jpk-select {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    &--disabled {}
+
+    &__label {}
+    &__menu {
+      &__item {}
+    }
+  }
+
+  /** JTable, JTableHeader, JTableRow, JTableColHead, JTableBody, JTableCell, JTableFooter */
+  .jpk-table {
+    &__header {}
+    &__row {}
+    &__col-head {}
+    &__body {}
+    &__cell {}
+    &__footer {}
+  }
+
+  /** JTabs */
   .jpk-tabs {
     .jpk-tab {
-      border-bottom: 1px solid #ccc;
-      padding-left: 0;
-
-      &__button {
-        cursor: pointer;
-        display: inline-block;
-        list-style: none;
-        margin-bottom: -1px;
-        padding: 0.5rem 0.75rem;
+      &__header {
+        border-bottom: 1px solid #ccc;
+        padding-left: 0;
       }
+
+      &__summary {
+        cursor: pointer;
+          display: inline-block;
+          list-style: none;
+          margin-bottom: -1px;
+          padding: 0.5rem 0.75rem;
+      }
+
+      &__content {}
 
       &--active {
         background-color: white;
-        border: solid #ccc;
-        border-width: 1px 1px 0 1px;
+          border: solid #ccc;
+          border-width: 1px 1px 0 1px;
       }
     }
+  }
+
+  /** JText (JTypography) */
+  .jpk-typography {
+    &__b {}
+    &__big {}
+    &__del {}
+    &__div {}
+    &__em {}
+    &__h1 {}
+    &__h2 {}
+    &__h3 {}
+    &__h4 {}
+    &__h5 {}
+    &__h6 {}
+    &__i {}
+    &__ins {}
+    &__mark {}
+    &__p {}
+    &__span {}
+    &__sub {}
+    &__sup {}
+    &__small {}
+    &__strong {}
+    &__u {}
+  }
+
+  /** JTextInput */
+  .jpk-text-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &--disabled {}
+    
+    &__label {}
+    &__input {}
+  }
+
+  /* Custom: TextInput */
+  .jpks-text-input {
+    &__input {}
+    &__label {}
+    &--disabled {}
   }
 `;
