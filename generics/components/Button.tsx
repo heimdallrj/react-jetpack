@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import React from 'react';
 
 // @todo: support for more variants
-// @rfc: new prop: as, so can use button component as in anchor tag
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,7 +27,7 @@ export default function Button({
       className={clsx(
         'jpk-btn',
         variant && `jpk-btn__${variant}`,
-        size && `jpk-btn__${size}`,
+        size && `jpk-btn--${size}`,
         className
       )}
     >

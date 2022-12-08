@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 /**
- * @references
+ * @check
  * - https://ogp.me
  * - https://ahrefs.com/blog/seo-meta-tags
  */

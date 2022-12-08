@@ -163,13 +163,13 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
-    &--small {
+    &__small {
       padding: 4px 5px;
     }
-    &--medium {
+    &__medium {
       padding: 6px 8px;
     }
-    &--large {
+    &__large {
       padding: 8px 11px;
     }
   }
@@ -314,12 +314,5 @@ export const GlobalStyle = createGlobalStyle`
     
     &__label {}
     &__input {}
-  }
-
-  /* Custom: TextInput */
-  .jpks-text-input {
-    &__input {}
-    &__label {}
-    &--disabled {}
   }
 `;

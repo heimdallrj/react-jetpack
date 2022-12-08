@@ -1,12 +1,16 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-type Props = {
+export type PortalProps = {
   children: React.ReactNode;
   target?: string;
 };
 
-export default function Portal({ children, target = 'portal-root' }: Props) {
+export default function Portal({
+  children,
+  target = 'portal-root',
+}: PortalProps) {
   const mount: any = document.getElementById(target);
   const el = document.createElement('div');
 
