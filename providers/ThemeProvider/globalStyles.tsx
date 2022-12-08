@@ -89,7 +89,7 @@ export const GlobalStyle = createGlobalStyle`
     &__section {}
     &__summary {
       align-items: center;
-      background-color: var(--colors-accent);
+      border: 1px solid #cccccc;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -179,7 +179,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 5px
+    gap: 5px;
 
     &--checked {}
     &--disabled {}
@@ -201,7 +201,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 5px
+    gap: 5px;
 
     &--checked {}
     &--disabled {}
@@ -215,7 +215,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 5px
+    gap: 5px;
 
     &--disabled
   }

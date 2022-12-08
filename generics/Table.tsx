@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { BlockVariant } from '../../layout/Block';
+import { BlockVariant } from '../layout/Block';
 
 // @todo: improve props to be exact
 
@@ -114,3 +114,5 @@ export const Table = ({
     )}
   </table>
 );
+
+export default Table;

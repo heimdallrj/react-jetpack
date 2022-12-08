@@ -94,4 +94,4 @@ export type JustifySelf =
   | 'initial'
   | 'inherit';
 
-export type Units = '%' | 'em' | 'rem' | 'px' | 'vh' | 'vw';
+export type Unit = '%' | 'em' | 'rem' | 'px' | 'vh' | 'vw';

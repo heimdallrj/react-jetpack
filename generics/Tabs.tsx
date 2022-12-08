@@ -61,3 +61,5 @@ export const Tabs = ({ children }: TabsProps) => {
     </div>
   );
 };
+
+export default Tabs;

@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { CSSProperties } from '../types';
 
+// @todo: stylis.js might be helpful to simplify the logic here.
+// @todo: all `gap`, `margin*` etc should be able to pass values not only numbers but units along with.
+
 const withUnit = (
   value: undefined | string | number,
-  unit: CSSProperties.Units
+  unit: CSSProperties.Unit
 ) => {
   if (!value) return undefined;
   if (typeof value === 'number') return `${value}${unit}`;
@@ -42,6 +45,7 @@ export interface BlockProps
     | HTMLSelectElement
     | HTMLTimeElement
   > {
+  as?: BlockVariant;
   alignContent?: CSSProperties.AlignContent;
   alignItems?: CSSProperties.AlignItems;
   alignSelf?: CSSProperties.AlignSelf;
@@ -72,8 +76,7 @@ export interface BlockProps
   paddingBottom?: number;
   paddingLeft?: number;
   rowGap?: number;
-  unit?: CSSProperties.Units; // @todo: allow this to configure in theme level
-  variant?: BlockVariant;
+  unit?: CSSProperties.Unit; // @todo: allow this to configure in theme level
   width?: number;
 }
 
@@ -113,6 +116,7 @@ const Element = styled.div<any>`
 `;
 
 export default function Block({
+  as = 'div',
   alignContent,
   alignItems,
   alignSelf,
@@ -145,14 +149,13 @@ export default function Block({
   paddingBottom,
   paddingLeft,
   unit = 'px',
-  variant = 'div',
   width,
   ...restProps
 }: BlockProps) {
   return (
     <Element
       {...restProps}
-      as={variant}
+      as={as}
       $alignContent={alignContent}
       $alignItems={alignItems}
       $alignSelf={alignSelf}

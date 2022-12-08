@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
 
+// @todo: make more compatible with html semantic elements
+
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   action?: string;
   className?: string;
