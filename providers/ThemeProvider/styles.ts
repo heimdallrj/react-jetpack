@@ -3,27 +3,35 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --colors-primary: #4f53b1;
-    --colors-secondary: #420039;
-    --colors-accent: #cccccc;
-    --colors-tertiary: #D72638
-    --colors-quaternary: #FFFFFF
-    --colors-quinary: #FF570A
-    --colors-bg-primary: white;
-    --colors-text-primary: #000000;
-    --colors-error: rgb(253, 237, 237);
-    --colors-warning: rgb(255, 244, 229);
-    --colors-info: rgb(229, 246, 253);
-    --colors-success: rgb(237, 247, 237);
-    --colors-disabled: rgba(0, 0, 0, 0.12);
-    --colors-disabled-text: rgba(0, 0, 0, 0.26);
-    --colors-a-hover: #ccc;
-    --fonts-primary: 'Montserrat', sans-serif;
-    --fonts-size-primary: 14px;
+    --colors-primary: ${($) => $['--colors-primary']};
+    --colors-secondary: ${($) => $['--colors-secondary']};
+    --colors-tertiary: ${($) => $['--colors-tertiary']};
+    --colors-accent: ${($) => $['--colors-accent']};
+    --colors-error: ${($) => $['--colors-error']};
+    --colors-warning: ${($) => $['--colors-warning']};
+    --colors-info: ${($) => $['--colors-info']};
+    --colors-success: ${($) => $['--colors-success']};
+    --colors-bg-primary: ${($) => $['--colors-bg-primary']};
+    --colors-bg-secondary: ${($) => $['--colors-bg-secondary']};
+    --colors-text-primary:${($) => $['--colors-text-primary']};
+    --colors-text-secondary: ${($) => $['--colors-text-secondary']};
+    --colors-disabled: ${($) => $['--colors-disabled']};
+    --colors-a: ${($) => $['--colors-a']};
+    --colors-a-hover: ${($) => $['--colors-a-hover']};
+    --fonts-primary: ${($) => $['--fonts-primary']};
+    --fonts-secondary: ${($) => $['--fonts-secondary']};
+    --fonts-size-primary: ${($) => $['--fonts-size-primary']};
   }
+  /* normalize browser defaults with normalize.css */
+  button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type=checkbox],[type=radio],legend{box-sizing:border-box;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}
+
   html {}
-  a { 
+  a {
+    color: var(--colors-a);
     text-decoration: none;
+    &:hover {
+      color: var(--colors-a-hover);
+    }
   }
   aside {}
   article {}
@@ -137,7 +145,7 @@ export const GlobalStyle = createGlobalStyle`
       &[disabled] {
         background-color: var(--colors-disabled);
         box-shadow: var(--colors-disabled) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
-        color: var(--colors-disabled-text);
+        color: var(--colors-accent);
       }
     }
     &__outlined {
@@ -149,7 +157,7 @@ export const GlobalStyle = createGlobalStyle`
       &:disabled,
       &[disabled] {
         border: 1px solid var(--colors-disabled);
-        color: var(--colors-disabled-text);
+        color: var(--colors-accent);
       }
     }
     &__text {
@@ -159,7 +167,7 @@ export const GlobalStyle = createGlobalStyle`
 
       &:disabled,
       &[disabled] {
-        color: var(--colors-disabled-text);
+        color: var(--colors-accent);
       }
     }
 
