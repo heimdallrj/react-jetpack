@@ -1,19 +1,33 @@
-import React, { useState } from 'react';
+import clsx from 'clsx';
+import React, { CSSProperties, useState } from 'react';
 
 // @todo: extends to change icons, aria-controls
 // and other accessibility stuff
+// @todo: simplify the html markup
 
 export type AccordionItemProps = {
-  id?: string;
-  summary: string;
   children: string | React.ReactNode;
+  className?: string;
+  id?: string;
+  style?: CSSProperties;
+  summary: string;
 };
 
-export function AccordionItem({ id, summary, children }: AccordionItemProps) {
+export function AccordionItem({
+  id,
+  summary,
+  children,
+  className,
+  style,
+}: AccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section key={id ?? summary} className='jpk-accordion__section'>
+    <section
+      key={id ?? summary}
+      className={clsx('jpk-accordion__section', className)}
+      style={style}
+    >
       <div
         role='button'
         aria-expanded={isOpen}
@@ -30,12 +44,19 @@ export function AccordionItem({ id, summary, children }: AccordionItemProps) {
 
 export type AccordionProps = {
   children?: React.ReactNode;
+  className?: string;
   data?: AccordionItemProps[];
+  style?: CSSProperties;
 };
 
-export function Accordion({ children, data }: AccordionProps) {
+export function Accordion({
+  children,
+  data,
+  className,
+  style,
+}: AccordionProps) {
   return (
-    <div className='jpk-accordion'>
+    <div className={clsx('jpk-accordion', className)} style={style}>
       {data ? data.map(AccordionItem) : children}
     </div>
   );

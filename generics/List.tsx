@@ -22,11 +22,9 @@ export function List({
   );
 }
 
-export function ListItem({
-  children,
-  className,
-  ...restProps
-}: React.HTMLAttributes<HTMLLIElement>) {
+export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {}
+
+export function ListItem({ children, className, ...restProps }: ListItemProps) {
   return (
     <li {...restProps} className={clsx('jpk-list__item', className)}>
       {children}

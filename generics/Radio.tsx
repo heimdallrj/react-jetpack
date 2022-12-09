@@ -1,28 +1,33 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
+import { omit } from '../utils/mixins';
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Style extends CSSProperties {
+  input?: CSSProperties;
+  label?: CSSProperties;
+}
+
+export interface RadioProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   checked?: boolean;
   className?: string;
   disabled?: boolean;
-  inputStyle?: CSSProperties;
   label?: string;
   name?: string;
-  style?: CSSProperties;
+  style?: Style;
   value?: string;
 }
 
-export default function Radio({
+export function Radio({
   checked = false,
   className,
   disabled = false,
-  inputStyle,
   label,
   name,
-  style = {},
+  style,
   value,
   ...restProps
-}: Props) {
+}: RadioProps) {
   return (
     <div
       className={clsx(
@@ -31,7 +36,7 @@ export default function Radio({
         disabled && 'jpk-radio--disabled',
         className
       )}
-      style={style}
+      style={omit(style, 'input', 'label')}
     >
       <input
         {...restProps}
@@ -39,15 +44,17 @@ export default function Radio({
         className='jpk-radio__input'
         disabled={disabled}
         name={name}
-        style={inputStyle}
+        style={style?.input}
         type='radio'
         value={value}
       />
       {label && (
-        <label className='jpk-radio__label' htmlFor={name}>
+        <label htmlFor={name} className='jpk-radio__label' style={style?.label}>
           {label}
         </label>
       )}
     </div>
   );
 }
+
+export default Radio;

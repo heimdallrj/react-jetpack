@@ -24,27 +24,25 @@ export type TextVariant =
   | 'strong'
   | 'u';
 
-interface Props extends React.HTMLAttributes<HTMLElement> {
+export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
-  variant?: TextVariant;
+  as?: TextVariant;
 }
 
-export default function Text({
+export function Text({
   children,
-  variant = 'p',
+  as = 'p',
   className,
   ...restProps
-}: Props) {
+}: TextProps) {
   return React.createElement(
-    variant,
+    as,
     {
       ...restProps,
-      className: clsx(
-        'jpk-typography',
-        `jpk-typography__${variant}`,
-        className
-      ),
+      className: clsx('jpk-typography', `jpk-typography__${as}`, className),
     },
     children
   );
 }
+
+export default Text;

@@ -1,4 +1,3 @@
-// @todo:
 export {
   Table,
   TableHeader,
@@ -8,4 +7,5 @@ export {
   TableCell,
   TableFooter,
 } from '../generics';
-export { Table as default } from '../generics/';
+export { Table as default } from '../generics';
+export type { TableProps } from '../generics';

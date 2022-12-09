@@ -1,13 +1,14 @@
 import clsx from 'clsx';
+import React from 'react';
 
 // @todo: implement `variant`
 
-type Props = {
+export type AlertProps = {
   children: string;
   severity?: 'error' | 'warning' | 'info' | 'success';
 };
 
-export default function Alert({ children, severity }: Props) {
+export function Alert({ children, severity }: AlertProps) {
   return (
     <div
       role='alert'
@@ -17,3 +18,5 @@ export default function Alert({ children, severity }: Props) {
     </div>
   );
 }
+
+export default Alert;

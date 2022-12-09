@@ -1,23 +1,27 @@
 import clsx from 'clsx';
 import { CSSProperties } from 'react';
+import { omit } from '../utils/mixins';
+
+interface Style extends CSSProperties {
+  input?: CSSProperties;
+  label?: CSSProperties;
+}
 
 export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   checked?: boolean;
   className?: string;
   disabled?: boolean;
-  inputStyle?: CSSProperties;
   label?: string;
   name?: string;
-  style?: CSSProperties;
+  style?: Style;
   value?: string;
 }
 
-export default function Checkbox({
+export function Checkbox({
   checked = false,
   className,
   disabled = false,
-  inputStyle,
   label,
   name,
   style,
@@ -32,7 +36,7 @@ export default function Checkbox({
         disabled && 'jpk-checkbox--disabled',
         className
       )}
-      style={style}
+      style={omit(style, 'input', 'label')}
     >
       <input
         {...restProps}
@@ -40,15 +44,21 @@ export default function Checkbox({
         className='jpk-checkbox__input'
         disabled={disabled}
         name={name}
-        style={inputStyle}
+        style={style?.input}
         type='checkbox'
         value={value}
       />
       {label && (
-        <label className='jpk-checkbox__label' htmlFor={name}>
+        <label
+          htmlFor={name}
+          className='jpk-checkbox__label'
+          style={style?.label}
+        >
           {label}
         </label>
       )}
     </div>
   );
 }
+
+export default Checkbox;

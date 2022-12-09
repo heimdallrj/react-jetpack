@@ -1,5 +1,11 @@
 import clsx from 'clsx';
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
+import { omit } from '../utils/mixins';
+
+interface Style extends CSSProperties {
+  input?: CSSProperties;
+  label?: CSSProperties;
+}
 
 export type InputTypes =
   | 'color'
@@ -15,21 +21,20 @@ export type InputTypes =
   | 'url'
   | 'week';
 
-interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
-  inputStyle?: CSSProperties;
   label?: string;
   name?: string;
-  style?: CSSProperties;
+  style?: Style;
   type?: InputTypes;
   value?: string;
 }
 
-export default function TextInput({
+export function TextInput({
   className,
   disabled = false,
-  inputStyle,
   label,
   name,
   style,
@@ -44,10 +49,14 @@ export default function TextInput({
         disabled && 'jpk-text-input--disabled',
         className
       )}
-      style={style}
+      style={omit(style, 'input', 'label')}
     >
       {label && (
-        <label htmlFor={name} className='jpk-text-input__label'>
+        <label
+          htmlFor={name}
+          className='jpk-text-input__label'
+          style={style?.label}
+        >
           {label}
         </label>
       )}
@@ -56,10 +65,12 @@ export default function TextInput({
         className='jpk-text-input__input'
         disabled={disabled}
         name={name}
-        style={inputStyle}
+        style={style?.input}
         type={type}
         value={value}
       />
     </div>
   );
 }
+
+export default TextInput;

@@ -1,22 +1,27 @@
 import clsx from 'clsx';
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
+import { omit } from '../utils/mixins';
+
+interface Style extends CSSProperties {
+  input?: CSSProperties;
+  button?: CSSProperties;
+}
 
 // @todo: make more compatible with html semantic elements
 
-interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SearchInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   action?: string;
   className?: string;
-  inputStyle?: CSSProperties;
   name?: string;
-  style?: CSSProperties;
+  style?: Style;
   onSubmit?: () => void;
 }
 
-export default function SearchInput({
+export function SearchInput({
   action,
   className,
   disabled = false,
-  inputStyle,
   name = 'q',
   style,
   onSubmit,
@@ -30,7 +35,7 @@ export default function SearchInput({
         disabled && 'jpk-search-input--disabled',
         className
       )}
-      style={style}
+      style={omit(style, 'input', 'button')}
     >
       <input
         {...restProps}
@@ -38,13 +43,14 @@ export default function SearchInput({
         className='jpk-search-input__input'
         disabled={disabled}
         name={name}
-        style={inputStyle}
+        style={style?.input}
         type='search'
       />
       <button
         className='jpk-search-input__btn'
         type='submit'
         disabled={disabled}
+        style={style?.button}
         onClick={onSubmit}
       >
         Search
@@ -52,3 +58,5 @@ export default function SearchInput({
     </form>
   );
 }
+
+export default SearchInput;

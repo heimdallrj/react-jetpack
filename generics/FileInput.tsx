@@ -1,11 +1,12 @@
 import clsx from 'clsx';
+import React from 'react';
 
 export interface FileInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 
-export default function FileInput({ className, ...restProps }: FileInputProps) {
+export function FileInput({ className, ...restProps }: FileInputProps) {
   return (
     <input
       {...restProps}
@@ -14,3 +15,5 @@ export default function FileInput({ className, ...restProps }: FileInputProps) {
     />
   );
 }
+
+export default FileInput;

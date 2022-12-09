@@ -97,7 +97,6 @@ export const GlobalStyle = createGlobalStyle`
     &__section {}
     &__summary {
       align-items: center;
-      border: 1px solid #cccccc;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -187,12 +186,15 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     display: flex;
     flex-direction: row;
+    vertical-align: middle;
     gap: 5px;
 
     &--checked {}
     &--disabled {}
 
-    &__input {}
+    &__input {
+      accent-color: var(--colors-primary);
+    }
     &__label {}
   }
 
@@ -214,12 +216,15 @@ export const GlobalStyle = createGlobalStyle`
     &--checked {}
     &--disabled {}
 
-    &__input {}
+    &__input {
+      accent-color: var(--colors-primary);
+    }
     &__label {}
   }
 
   /** JRangeInput {} */
   .jpk-range-input {
+    accent-color: var(--colors-primary);
     align-items: center;
     display: flex;
     flex-direction: row;

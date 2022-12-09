@@ -1,22 +1,27 @@
 import clsx from 'clsx';
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
+import { omit } from '../utils/mixins';
+
+interface Style extends CSSProperties {
+  select?: CSSProperties;
+  option?: CSSProperties;
+  label?: CSSProperties;
+}
 
 export type Option = { label: string; value: string };
 
 export interface SelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  inputStyle?: CSSProperties;
   options: Option[];
-  style?: CSSProperties;
+  style?: Style;
 }
 
-export default function Select({
+export function Select({
   className,
   disabled,
   label,
   name,
-  inputStyle,
   options = [],
   style,
   value,
@@ -29,10 +34,14 @@ export default function Select({
         disabled && 'jpk-select--disabled',
         className
       )}
-      style={style}
+      style={omit(style, 'select', 'option', 'label')}
     >
       {label && (
-        <label className='jpk-select__label' htmlFor={name}>
+        <label
+          className='jpk-select__label'
+          htmlFor={name}
+          style={style?.label}
+        >
           {label}
         </label>
       )}
@@ -40,7 +49,7 @@ export default function Select({
         className='jpk-select__menu'
         disabled={disabled}
         name={name}
-        style={inputStyle}
+        style={style?.select}
         value={value}
         {...restProps}
       >
@@ -49,6 +58,7 @@ export default function Select({
             className='jpk-select__menu__item'
             key={opt.value}
             value={opt.value}
+            style={style?.option}
           >
             {opt.label}
           </option>
@@ -57,3 +67,5 @@ export default function Select({
     </div>
   );
 }
+
+export default Select;

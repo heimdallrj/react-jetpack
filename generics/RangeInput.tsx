@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import React from 'react';
 
 // @todo: fix this properly
 
@@ -7,10 +8,7 @@ export interface RangeInputProps
   className?: string;
 }
 
-export default function RangeInput({
-  className,
-  ...restProps
-}: RangeInputProps) {
+export function RangeInput({ className, ...restProps }: RangeInputProps) {
   return (
     <input
       {...restProps}
@@ -19,3 +17,5 @@ export default function RangeInput({
     />
   );
 }
+
+export default RangeInput;
