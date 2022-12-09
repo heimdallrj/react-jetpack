@@ -8,15 +8,15 @@ const requestInterceptor = (req: AxiosRequestConfig): AxiosRequestConfig => {
 };
 
 const responseInterceptor = (res: AxiosResponse): AxiosResponse => {
-  return res.data;
+  return res.data.data;
 };
 
 const errorInterceptor = (error: AxiosError): Promise<AxiosError> => {
   return Promise.reject(error);
 };
 
-export const init = ({ apiBaseUrl, apiVersion }: any) => {
-  axios.defaults.baseURL = `${apiBaseUrl}/${apiVersion}`;
+export const init = (apiBaseUrl: string) => {
+  axios.defaults.baseURL = `${apiBaseUrl}`;
   axios.interceptors.request.use(requestInterceptor, errorInterceptor);
   axios.interceptors.response.use(responseInterceptor, errorInterceptor);
 };
