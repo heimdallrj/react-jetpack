@@ -3,7 +3,7 @@ import React from 'react';
 
 export interface ListProps
   extends React.HTMLAttributes<HTMLUListElement | HTMLOListElement> {
-  as?: 'ol' | 'ul';
+  as?: 'div' | 'ol' | 'ul';
 }
 
 export function List({
@@ -22,13 +22,23 @@ export function List({
   );
 }
 
-export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {}
+export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
+  as?: 'li' | 'div';
+}
 
-export function ListItem({ children, className, ...restProps }: ListItemProps) {
-  return (
-    <li {...restProps} className={clsx('jpk-list__item', className)}>
-      {children}
-    </li>
+export function ListItem({
+  as = 'li',
+  children,
+  className,
+  ...restProps
+}: ListItemProps) {
+  return React.createElement(
+    as,
+    {
+      className: clsx('jpk-list__item', className),
+      ...restProps,
+    },
+    children
   );
 }
 
