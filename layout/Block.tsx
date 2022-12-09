@@ -9,6 +9,7 @@ const withUnit = (
   value: undefined | string | number,
   unit: CSSProperties.Unit
 ) => {
+  if (typeof value === 'string') return value;
   if (!value) return undefined;
   if (typeof value === 'number') return `${value}${unit}`;
   return value;
@@ -35,7 +36,7 @@ export type BlockVariant =
   | 'time'
   | 'ul';
 
-export type Margin = 'auto' | number;
+export type Margin = 'auto' | number | 'string';
 
 export interface BlockProps
   extends React.ButtonHTMLAttributes<
@@ -70,7 +71,7 @@ export interface BlockProps
   maxWidth?: number;
   minHeight?: number;
   minWidth?: number;
-  padding?: number;
+  padding?: number | string;
   paddingTop?: number;
   paddingRight?: number;
   paddingBottom?: number;
