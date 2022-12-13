@@ -39,6 +39,7 @@ export function SearchInput({
     >
       <input
         {...restProps}
+        aria-label='Search'
         autoComplete='off'
         className='jpk-search-input__input'
         disabled={disabled}
