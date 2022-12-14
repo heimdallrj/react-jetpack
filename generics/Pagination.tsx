@@ -33,22 +33,22 @@ export function Pagination({
 }: Props) {
   const pages = Math.ceil(total / pageSize);
 
-  const select = (page: number) => onSelect(page);
-
   const handlePrev = () => {
-    select(current - 1);
+    onSelect(current - 1);
   };
 
   const handleNext = () => {
-    select(current + 1);
+    onSelect(current + 1);
   };
+
+  if (!total) return null;
 
   return (
     <div style={style} className={clsx('jpk-pagination', className)}>
       <button
         className='jpk-pagination__nav jpk-pagination__nav__first'
         disabled={current === 1}
-        onClick={() => select(1)}
+        onClick={() => onSelect(1)}
       >
         {labels.first}
       </button>
@@ -68,7 +68,7 @@ export function Pagination({
             `jpk-pagination__item__${index + 1}`,
             current === index + 1 && 'jpk-pagination__item--current'
           )}
-          onClick={() => select(index + 1)}
+          onClick={() => onSelect(index + 1)}
         >
           {index + 1}
         </button>
@@ -84,7 +84,7 @@ export function Pagination({
       <button
         className='jpk-pagination__nav jpk-pagination__nav__last'
         disabled={current === pages}
-        onClick={() => select(pages)}
+        onClick={() => onSelect(pages)}
       >
         {labels.last}
       </button>
