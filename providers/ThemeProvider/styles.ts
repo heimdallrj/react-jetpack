@@ -206,6 +206,35 @@ export const GlobalStyle = createGlobalStyle`
     &__item {}
   }
 
+  /** JPagiantion **/
+  .jpk-pagination {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  
+    &__item {
+      border: 1px solid #ccc;
+      padding: 8px;
+      width: 16px;
+      text-align: center;
+      cursor: pointer;
+
+      &__first {}
+      &__prev {}
+      &__next {}
+      &__last {}
+
+      &--current {
+        background: red;
+        color: white;
+      }
+    }
+  
+  }
+
   /** JRadio */
   .jpk-radio {
     align-items: center;

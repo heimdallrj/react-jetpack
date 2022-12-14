@@ -4,6 +4,7 @@ export * from './Button';
 export * from './Checkbox';
 export * from './FileInput';
 export * from './List';
+export * from './Pagination';
 export * from './Radio';
 export * from './RangeInput';
 export * from './SearchInput';
