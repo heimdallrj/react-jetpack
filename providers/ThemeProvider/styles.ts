@@ -214,22 +214,21 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     margin: 0;
     padding: 0;
-  
-    &__item {
-      border: 1px solid #ccc;
-      padding: 8px;
-      width: 16px;
-      text-align: center;
-      cursor: pointer;
+
+    &__nav {
+      border: none;
+      background-color: transparent;
 
       &__first {}
       &__prev {}
       &__next {}
       &__last {}
+    }
+  
+    &__item {
 
       &--current {
-        background: red;
-        color: white;
+        background-color: #cccccc;
       }
     }
   
