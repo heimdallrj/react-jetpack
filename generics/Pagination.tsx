@@ -60,17 +60,17 @@ export function Pagination({
         {labels.prev}
       </button>
 
-      {Array.from(Array(pages).keys()).map((index: any) => (
+      {Array.from(Array(pages).keys()).map((pageIndex: any) => (
         <button
-          key={index}
+          key={pageIndex}
           className={clsx(
             'jpk-pagination__item',
-            `jpk-pagination__item__${index + 1}`,
-            current === index + 1 && 'jpk-pagination__item--current'
+            `jpk-pagination__item__${pageIndex + 1}`,
+            current === pageIndex + 1 && 'jpk-pagination__item--current'
           )}
-          onClick={() => onSelect(index + 1)}
+          onClick={() => onSelect(pageIndex + 1)}
         >
-          {index + 1}
+          {pageIndex + 1}
         </button>
       ))}
 
