@@ -2,27 +2,25 @@
   "name": "react-jetpack",
   "version": "1.0.0-alpha.4",
   "description": "An opinionated, but loosely coupled toolkit for efficient React.js development.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./src/index.js",
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir build/cjs",
     "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "postbuild": "node ./scripts/build.js"
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thinkholic/react-jetpack.git"
+    "url": "git+https://github.com/thinkholic/react-jetpack.git",
+    "directory": "packages/react-jetpack"
   },
   "author": "thinkholic",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thinkholic/react-jetpack/issues"
   },
-  "homepage": "https://github.com/thinkholic/react-jetpack#readme",
+  "homepage": "https://github.com/thinkholic/react-jetpack/blob/main/packages/react-jetpack/README.md",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@storybook/addon-actions": "^6.5.15",
@@ -50,8 +48,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }

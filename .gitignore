@@ -3,7 +3,7 @@ node_modules
 
 # builds
 build
-dist/package.json
+dist
 .rpt2_cache
 
 # misc

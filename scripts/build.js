@@ -3,28 +3,28 @@
     const { exec } = require('./bash');
 
     await exec('rm -rf ./dist');
-    await exec('mkdir ./dist');
+    await exec('mkdir ./dist && mkdir ./dist/react-jetpack');
 
-    await exec('cp -r ./build/esm ./dist/');
-    await exec('cp -r ./build/cjs/ ./dist/');
+    await exec('cp -r ./packages/react-jetpack/build/esm ./dist/react-jetpack');
+    await exec(
+      'cp -r ./packages/react-jetpack/build/cjs/ ./dist/react-jetpack'
+    );
 
-    await exec('cp ./LICENSE ./dist/');
-    // await exec('cp ./README.md ./dist/');
+    await exec('cp ./packages/react-jetpack/LICENSE ./dist/react-jetpack/');
+    // await exec('cp ./packages/react-jetpack/README.md ./dist/react-jetpack/');
 
     // Generate package.json
-    const pkg = require('../package.json');
+    const pkg = require('../packages/react-jetpack/package.json');
     const pkgFinal = {
       ...pkg,
       main: './index.js',
       module: './esm/index.js',
       types: './index.d.ts',
-      scripts: {
-        publish: 'npm publish',
-      },
+      scripts: {},
     };
     const path = require('path');
     require('./fs').write(
-      path.join(__dirname, '../dist/package.json'),
+      path.join(__dirname, '../dist/react-jetpack/package.json'),
       pkgFinal
     );
   } catch (err) {

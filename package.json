@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "jetpack-mono",
+  "scripts": {
+    "build": "cd ./packages/react-jetpack && yarn build",
+    "postbuild": "node ./scripts/build.js"
+  },
+  "workspaces": [
+    "packages/*",
+    "dist/*"
+  ]
+}
