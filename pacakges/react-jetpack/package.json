@@ -1,0 +1,57 @@
+{
+  "name": "react-jetpack",
+  "version": "1.0.0-alpha.4",
+  "description": "An opinionated, but loosely coupled toolkit for efficient React.js development.",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir build/cjs",
+    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "postbuild": "node ./scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkholic/react-jetpack.git"
+  },
+  "author": "thinkholic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thinkholic/react-jetpack/issues"
+  },
+  "homepage": "https://github.com/thinkholic/react-jetpack#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack4": "^6.5.15",
+    "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26",
+    "axios": "^1.2.2",
+    "babel-loader": "^8.3.0",
+    "clsx": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^1.3.0",
+    "styled-components": "^5.3.6",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
