@@ -15,6 +15,7 @@
 
     // Generate package.json
     const pkg = require('../packages/react-jetpack/package.json');
+    delete pkg.private;
     const pkgFinal = {
       ...pkg,
       name: 'react-jetpack',

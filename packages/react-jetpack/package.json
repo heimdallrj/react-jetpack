@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "react-jetpack-src",
   "version": "1.0.0-alpha.5",
   "description": "An opinionated, but loosely coupled toolkit for efficient React.js development.",
