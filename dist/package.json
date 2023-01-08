@@ -2,16 +2,11 @@
   "name": "react-jetpack",
   "version": "1.0.0-alpha.4",
   "description": "An opinionated, but loosely coupled toolkit for efficient React.js development.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./index.js",
+  "module": "./esm/index.js",
+  "types": "./index.d.ts",
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir build/cjs",
-    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "postbuild": "node ./scripts/build.js"
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",
