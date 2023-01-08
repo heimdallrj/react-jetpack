@@ -17,7 +17,7 @@ type MetaTag = {
   content: string;
 };
 
-export default function SEOMeta({ title, metaTags = [] }: Props) {
+export default function SeoMeta({ title, metaTags = [] }: Props) {
   return (
     <Helmet>
       <title>{title}</title>

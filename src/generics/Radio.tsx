@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import { omit } from '../utils/mixins';
 
 interface Style extends CSSProperties {
