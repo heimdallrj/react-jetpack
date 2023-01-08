@@ -17,6 +17,7 @@
     const pkg = require('../packages/react-jetpack/package.json');
     const pkgFinal = {
       ...pkg,
+      name: 'react-jetpack',
       main: './index.js',
       module: './esm/index.js',
       types: './index.d.ts',
