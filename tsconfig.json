@@ -1,6 +1,6 @@
 {
   "include": ["src"],
-  "exclude": ["build", "node_modules"],
+  "exclude": ["build", "node_modules", "src/stories"],
   "compilerOptions": {
     "allowJs": true,
     "module": "esnext",
