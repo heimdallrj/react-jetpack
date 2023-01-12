@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "react-jetpack-src",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.1",
   "description": "An opinionated, but loosely coupled toolkit for efficient React.js development.",
   "main": "./src/index.js",
   "scripts": {
