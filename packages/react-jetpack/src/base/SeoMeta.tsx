@@ -1,20 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-/**
- * @check
- * - https://ogp.me
- * - https://ahrefs.com/blog/seo-meta-tags
- */
-
-type Props = {
-  title: string;
-  metaTags?: any[];
-};
-
 type MetaTag = {
   name: string;
   content: string;
+};
+
+type Props = {
+  title: string;
+  metaTags?: MetaTag[];
 };
 
 export default function SeoMeta({ title, metaTags = [] }: Props) {
