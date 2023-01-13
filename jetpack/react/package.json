@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "react-jetpack-src",
+  "name": "@jetpack/react",
   "version": "1.0.1",
   "description": "An opinionated, but loosely coupled toolkit for efficient React.js development.",
   "main": "./src/index.js",

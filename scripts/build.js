@@ -5,16 +5,14 @@
     await exec('rm -rf ./dist');
     await exec('mkdir ./dist && mkdir ./dist/react-jetpack');
 
-    await exec('cp -r ./packages/react-jetpack/build/esm ./dist/react-jetpack');
-    await exec(
-      'cp -r ./packages/react-jetpack/build/cjs/ ./dist/react-jetpack'
-    );
+    await exec('cp -r ./jetpack/react/build/esm ./dist/react-jetpack');
+    await exec('cp -r ./jetpack/react/build/cjs/ ./dist/react-jetpack');
 
-    await exec('cp ./packages/react-jetpack/LICENSE ./dist/react-jetpack/');
-    // await exec('cp ./packages/react-jetpack/README.md ./dist/react-jetpack/');
+    await exec('cp ./jetpack/react/LICENSE ./dist/react-jetpack/');
+    // await exec('cp ./jetpack/react/README.md ./dist/react-jetpack/');
 
     // Generate package.json
-    const pkg = require('../packages/react-jetpack/package.json');
+    const pkg = require('../jetpack/react/package.json');
     delete pkg.private;
     const pkgFinal = {
       ...pkg,

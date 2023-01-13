@@ -8,6 +8,8 @@
  * @copyright https://blog.cloudboost.io/node-js-writing-shell-scripts-using-modern-javascript-instead-of-bash-774e0859f965
  */
 
+// @todo: can expose this as a util inside @jetpack/js-utils
+
 module.exports.exec = function (
   command,
   { capture = false, echo = false } = {}
